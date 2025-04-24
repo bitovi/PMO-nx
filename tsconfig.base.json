@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@common/models": ["libs/common/models/src/index.ts"],
+      "@common/ui": ["libs/common/ui/src/index.ts"],
       "@common/utilities": ["libs/common/utilities/src/index.ts"],
       "@features/pmo/error": ["libs/pmo/error/src/index.ts"],
       "@features/pmo/home": ["libs/pmo/home/src/index.ts"],
