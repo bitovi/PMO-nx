@@ -30,6 +30,22 @@
       ],
       "@features/pmo/restaurants-list": [
         "libs/pmo/restaurants-list/src/index.ts"
+      ],
+      "@features/restaurants-admin/auth": [
+        "libs/restaurants-admin/auth/src/index.ts"
+      ],
+      "@features/restaurants-admin/restaurant-orders": [
+        "libs/restaurants-admin/restaurant-orders/src/index.ts"
+      ],
+      "@features/sys-admin/add-restaurant": [
+        "libs/sys-admin/add-restaurant/src/index.ts"
+      ],
+      "@features/sys-admin/auth": ["libs/sys-admin/auth/src/index.ts"],
+      "@features/sys-admin/edit-restaurant": [
+        "libs/sys-admin/edit-restaurant/src/index.ts"
+      ],
+      "@features/sys-admin/list-restaurants": [
+        "libs/sys-admin/list-restaurants/src/index.ts"
       ]
     }
   },
