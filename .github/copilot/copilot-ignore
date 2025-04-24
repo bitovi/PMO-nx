@@ -1,0 +1,17 @@
+# Ignore environment-specific files
+**/environment.*.ts
+**/environments/*.ts
+
+# Ignore configuration files that might contain sensitive data
+**/proxy.conf.json
+**/*.config.prod.ts
+
+# Ignore generated files
+**/dist/**
+**/.nx/cache/**
+**/coverage/**
+**/node_modules/**
+
+# Ignore temporary files
+**/.tmp/**
+**/.temp/**
