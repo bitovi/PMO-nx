@@ -4,5 +4,10 @@
     "nx.json": ".*,*.ts,*mjs,*.js,*.json,*.md",
     "project.json": "*.ts,*mjs,*.js,*.json,*.md"
   },
-  "explorer.fileNesting.expand": false
+  "explorer.fileNesting.expand": false,
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": "../.github/copilot-instructions.md"
+    }
+  ]
 }

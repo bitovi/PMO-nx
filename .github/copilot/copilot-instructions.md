@@ -23,8 +23,8 @@ PMO-NX Place my order app using Nx, is a restaurant management app where clients
 
 ## Development Conventions
 
-- UI apps
-  - Use standalone components with Angular's new control flow syntax
+- UI apps/libs
+  - Use standalone components with Angular's new control flow syntax (prefer @If over \*ngIf...)
   - Follow Angular style guide for naming and structure.
   - Keep components small and focused on a single responsibility.
   - Prefer new Signals in templates and components.ts
