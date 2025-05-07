@@ -15,9 +15,20 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@common/api/db": ["libs/common/api/db/src/index.ts"],
       "@common/models": ["libs/common/models/src/index.ts"],
       "@common/ui": ["libs/common/ui/src/index.ts"],
       "@common/utilities": ["libs/common/utilities/src/index.ts"],
+      "@features/api/sys-admin/add-restaurant": [
+        "libs/api/sys-admin/add-restaurants/src/index.ts"
+      ],
+      "@features/api/sys-admin/auth": ["libs/api/sys-admin/auth/src/index.ts"],
+      "@features/api/sys-admin/edit-restaurant": [
+        "libs/api/sys-admin/edit-restaurants/src/index.ts"
+      ],
+      "@features/api/sys-admin/list-restaurants": [
+        "libs/api/sys-admin/list-restaurants/src/index.ts"
+      ],
       "@features/pmo/error": ["libs/pmo/error/src/index.ts"],
       "@features/pmo/home": ["libs/pmo/home/src/index.ts"],
       "@features/pmo/my-order-history": [

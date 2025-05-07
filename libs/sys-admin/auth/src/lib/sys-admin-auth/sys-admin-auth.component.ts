@@ -46,11 +46,27 @@ export class SysAdminAuthComponent {
   isLoading = signal(false);
 
   onSubmit() {
-    if (this.authForm.valid && name) {
+    if (this.authForm.valid) {
       const name = this.authForm.controls.name.value;
-      resource({
-        loader: () => ({ name }),
-        request:()=>
+      this.isLoading.set(true);
+
+      this.authService.login(name).subscribe({
+        next: (response) => {
+          this.isLoading.set(false);
+          if (response.success) {
+            this.router.navigate(['/']);
+          } else {
+            this.snackBar.open(response.message || 'Login failed', 'Close', {
+              duration: 3000,
+            });
+          }
+        },
+        error: () => {
+          this.isLoading.set(false);
+          this.snackBar.open('An error occurred', 'Close', {
+            duration: 3000,
+          });
+        },
       });
     }
   }

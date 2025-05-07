@@ -78,29 +78,15 @@
     },
     {
       "plugin": "@nx/js/typescript",
-      "options": {
-        "typecheck": {
-          "targetName": "typecheck"
-        },
-        "build": {
-          "targetName": "build",
-          "configName": "tsconfig.lib.json",
-          "buildDepsName": "build-deps",
-          "watchDepsName": "watch-deps"
-        }
-      },
-      "exclude": [
-        "libs/pmo/common/models/*",
-        "libs/common/models/*",
-        "libs/common/utilities/*"
-      ]
-    },
-    {
-      "plugin": "@nx/js/typescript",
       "include": [
         "libs/pmo/common/models/*",
         "libs/common/models/*",
-        "libs/common/utilities/*"
+        "libs/common/utilities/*",
+        "libs/api/sys-admin/auth/*",
+        "libs/api/sys-admin/add-restaurants/*",
+        "libs/api/sys-admin/edit-restaurants/*",
+        "libs/api/sys-admin/list-restaurants/*",
+        "libs/common/api/db/*"
       ],
       "options": {
         "typecheck": {

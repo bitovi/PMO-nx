@@ -1,6 +1,5 @@
 import { Injectable, resource } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 export interface AuthResponse {
   token?: string;
@@ -17,8 +16,8 @@ export class SysAdminAuthService {
   constructor(private http: HttpClient) {}
 
   login(name: string) {
-    resource({
-      loader,
+    return this.http.post<AuthResponse>(`${this.API_URL}/auth/login`, {
+      name,
     });
   }
 }
