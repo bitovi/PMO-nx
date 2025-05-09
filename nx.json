@@ -12,7 +12,7 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "nxCloudId": "680a2a0b4a6391016e346980",
   "targetDefaults": {
@@ -93,6 +93,49 @@
           "targetName": "typecheck"
         }
       }
-    }
-  ]
+    },
+    "@nx/owners"
+  ],
+  "sync": {
+    "applyChanges": true,
+    "globalGenerators": ["@nx/owners:sync-codeowners-file"]
+  },
+  "owners": {
+    "format": "github",
+    "outputPath": "CODEOWNERS",
+    "patterns": [
+      {
+        "description": "Frontend Team Projects",
+        "projects": ["tag:frontend"],
+        "owners": ["@frontend"]
+      },
+      {
+        "description": "Backend Team Projects",
+        "projects": ["tag:backend"],
+        "owners": ["@backend"]
+      }
+    ]
+  },
+  "conformance": {
+    "rules": [
+      {
+        "rule": "@nx/conformance/ensure-owners"
+      },
+      {
+        "rule": "@nx/conformance/enforce-project-boundaries",
+        "options": {
+          "depConstraints": [
+            {
+              "sourceTag": "frontend",
+              "notDependOnProjectsWithTags": ["backend"]
+            },
+            {
+              "sourceTag": "backend",
+              "notDependOnProjectsWithTags": ["frontend"]
+            }
+          ]
+        }
+      }
+    ]
+  }
 }

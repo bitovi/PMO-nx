@@ -4,7 +4,7 @@
   "sourceRoot": "libs/restaurants-admin/auth/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["frontend"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

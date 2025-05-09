@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/common/utilities/src",
   "projectType": "library",
-  "tags": [],
+  "tags": ["frontend"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

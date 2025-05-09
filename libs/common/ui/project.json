@@ -4,7 +4,7 @@
   "sourceRoot": "libs/common/ui/src",
   "prefix": "common-ui",
   "projectType": "library",
-  "tags": [],
+  "tags": ["frontend"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
