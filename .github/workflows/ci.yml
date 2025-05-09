@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    env:
+      NX_KEY: ${{ secrets.NX_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: tree:0
+          fetch-depth: 0
+
+      # Cache node_modules
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci --legacy-peer-deps
+      - uses: nrwl/nx-set-shas@v4
+
+      - name: Start CI Run
+        run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
+
+      - name: Check Formatting
+        run: npx nx-cloud record -- nx format:check
+
+      - name: Check Sync
+        run: npx nx-cloud record -- nx sync:check
+
+      - name: Enforce All Conformance Rules
+        run: npx nx-cloud record -- npx nx conformance:check
+      
+      - name: Run Affected Tasks
+        run: npx nx affected -t lint,test,build,e2e-ci --parallel=3
