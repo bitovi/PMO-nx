@@ -2,9 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
 
 permissions:
   actions: read
@@ -41,6 +38,6 @@ jobs:
 
       - name: Enforce All Conformance Rules
         run: npx nx-cloud record -- npx nx conformance:check
-      
+
       - name: Run Affected Tasks
         run: npx nx affected -t lint,test,build,e2e-ci --parallel=3
