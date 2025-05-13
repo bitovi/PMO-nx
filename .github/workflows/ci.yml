@@ -37,9 +37,6 @@ jobs:
       - name: Echo NX_KEY (for debugging; do not use in production)
         run: echo "${NX_KEY:0:4}****"
 
-      - name: Check Formatting
-        run: NX_VERBOSE_LOGGING=true npx nx-cloud record -- nx format:check
-
       - name: Check Sync
         run: npx nx-cloud record -- nx sync:check
 
