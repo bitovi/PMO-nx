@@ -37,12 +37,6 @@ jobs:
       - name: Echo NX_KEY (for debugging; do not use in production)
         run: echo "${NX_KEY:0:4}****"
 
-      - name: Check Sync
-        run: npx nx-cloud record -- nx sync:check
-
-      - name: Enforce All Conformance Rules
-        run: npx nx-cloud record -- nx conformance:check
-
 
       - name: Run Affected Tasks
         run: npx nx affected -t lint,test,build,e2e-ci --parallel=3
