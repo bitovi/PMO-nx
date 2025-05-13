@@ -34,6 +34,8 @@ jobs:
 
       - name: Start CI Run
         run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
+      - name: Echo NX_KEY (for debugging; do not use in production)
+        run: echo "$NX_KEY"
 
       - name: Check Formatting
         run: NX_VERBOSE_LOGGING=true npx nx-cloud record -- nx format:check
@@ -43,6 +45,7 @@ jobs:
 
       - name: Enforce All Conformance Rules
         run: npx nx-cloud record -- nx conformance:check
+
 
       - name: Run Affected Tasks
         run: npx nx affected -t lint,test,build,e2e-ci --parallel=3
