@@ -36,7 +36,7 @@ jobs:
         run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
 
       - name: Check Formatting
-        run: npx nx-cloud record -- nx format:check
+        run: NX_VERBOSE_LOGGING=true npx nx-cloud record -- nx format:check
 
       - name: Check Sync
         run: npx nx-cloud record -- nx sync:check
