@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NX_KEY: ${{ secrets.NX_KEY }}
+      NX_KEY_LOGGING: trace
     steps:
       - uses: actions/checkout@v4
         with:
