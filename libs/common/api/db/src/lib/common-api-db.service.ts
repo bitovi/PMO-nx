@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { SysAdminModel } from '@common/models';
-import * as sysAdminsMocks from './mocks/sys-admins.json';
 
 @Injectable()
 export class CommonApiDbService {
-  private sysAdmins: SysAdminModel[] = [...sysAdminsMocks];
+  private sysAdmins: SysAdminModel[] = [];
 
   getSysAdminByName(name: string): SysAdminModel | undefined {
     return this.sysAdmins.find((admin) => admin.name === name);
