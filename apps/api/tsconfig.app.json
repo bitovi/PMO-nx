@@ -15,21 +15,5 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
-  "references": [
-    {
-      "path": "../../libs/common/api/db"
-    },
-    {
-      "path": "../../libs/api/sys-admin/list-restaurants"
-    },
-    {
-      "path": "../../libs/api/sys-admin/edit-restaurants"
-    },
-    {
-      "path": "../../libs/api/sys-admin/add-restaurants"
-    },
-    {
-      "path": "../../libs/api/sys-admin/auth"
-    }
-  ]
+  "references": []
 }

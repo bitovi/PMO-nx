@@ -98,7 +98,8 @@
   ],
   "sync": {
     "applyChanges": true,
-    "globalGenerators": ["@nx/owners:sync-codeowners-file"]
+    "globalGenerators": ["@nx/owners:sync-codeowners-file"],
+    "disabledTaskSyncGenerators": ["@nx/js:typescript-sync"]
   },
   "owners": {
     "format": "github",
