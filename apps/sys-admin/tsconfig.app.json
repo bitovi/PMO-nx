@@ -6,5 +6,19 @@
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"],
-  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
+  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"],
+  "references": [
+    {
+      "path": "../../libs/sys-admin/list-restaurants"
+    },
+    {
+      "path": "../../libs/sys-admin/edit-restaurant"
+    },
+    {
+      "path": "../../libs/sys-admin/add-restaurant"
+    },
+    {
+      "path": "../../libs/sys-admin/auth"
+    }
+  ]
 }

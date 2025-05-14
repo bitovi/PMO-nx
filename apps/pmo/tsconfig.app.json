@@ -6,5 +6,28 @@
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"],
-  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
+  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"],
+  "references": [
+    {
+      "path": "../../libs/pmo/error"
+    },
+    {
+      "path": "../../libs/pmo/not-found"
+    },
+    {
+      "path": "../../libs/pmo/my-order-history"
+    },
+    {
+      "path": "../../libs/pmo/order-detail"
+    },
+    {
+      "path": "../../libs/pmo/restaurant-detail"
+    },
+    {
+      "path": "../../libs/pmo/restaurants-list"
+    },
+    {
+      "path": "../../libs/pmo/home"
+    }
+  ]
 }
