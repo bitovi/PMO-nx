@@ -9,5 +9,6 @@
     {
       "file": "../.github/copilot-instructions.md"
     }
-  ]
+  ],
+  "nxConsole.generateAiAgentRules": true
 }

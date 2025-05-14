@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/pmo/src",
-  "tags": [],
+  "tags": ["frontend"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -65,7 +65,8 @@
       "defaultConfiguration": "development",
       "options": {
         "proxyConfig": "apps/pmo/proxy.conf.json"
-      }
+      },
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
