@@ -40,9 +40,9 @@ jobs:
         run: npx nx format:check
 
       - name: Run Sync
-        run: nx sync:check
+        run: npx nx sync:check
 
       - name: Run Conformance
-        run: nx conformance:check
+        run: npx nx conformance:check
       - name: Run Affected Tasks
         run: npx nx affected -t lint,test,build,e2e-ci --parallel=3
