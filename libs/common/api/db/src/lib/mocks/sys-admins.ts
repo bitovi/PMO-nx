@@ -14,4 +14,9 @@ export const SysAdminsMocks = [
     email: 'michael.johnson@example.com',
     profileImage: 'https://randomuser.me/api/portraits/men/3.jpg',
   },
+  {
+    name: 'ilyass',
+    email: 'ilyassn@gmail.com',
+    profileImage: 'https://randomuser.me/api/portraits/men/3.jpg',
+  },
 ];

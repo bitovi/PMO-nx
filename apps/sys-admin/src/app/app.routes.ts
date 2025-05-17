@@ -29,6 +29,11 @@ export const appRoutes: Route[] = [
     },
     children: [
       {
+        path: '',
+        redirectTo: SysAdminDashBoardRoutes.RESTAURANT_LIST,
+        pathMatch: 'full',
+      },
+      {
         path: SysAdminDashBoardRoutes.ADD_RESTAURANT,
         loadComponent: () =>
           import('@features/sys-admin/add-restaurant').then(
