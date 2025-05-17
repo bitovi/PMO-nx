@@ -1,7 +1,7 @@
 {
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "nx.json": ".*,*.ts,*mjs,*.js,*.json,*.md",
+    "nx.json": ".*,*.ts,*mjs,*.js,*.json,*.md,CODEOWNERS,env*",
     "project.json": "*.ts,*mjs,*.js,*.json,*.md"
   },
   "explorer.fileNesting.expand": false,

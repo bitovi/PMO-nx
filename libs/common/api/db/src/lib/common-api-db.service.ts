@@ -1,24 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { SysAdminModel } from '@common/models';
+import { SysAdminModel } from '@common/models/common';
+import { SysAdminsMocks } from './mocks/sys-admins';
 
 @Injectable()
 export class CommonApiDbService {
-  getSysAdminByName(name: string): SysAdminModel | undefined {
-    throw new Error('Method not implemented.');
-  }
+  private sysAdmins: SysAdminModel[] = SysAdminsMocks;
 
-  createSysAdmin(sysAdmin: SysAdminModel): SysAdminModel {
-    throw new Error('Method not implemented.');
-  }
-
-  updateSysAdmin(
-    name: string,
-    updates: Partial<SysAdminModel>,
-  ): SysAdminModel | undefined {
-    throw new Error('Method not implemented.');
-  }
-
-  deleteSysAdmin(name: string): boolean {
-    throw new Error('Method not implemented.');
+  getSysAdminByNameOrEmail(name: string): SysAdminModel | undefined {
+    return this.sysAdmins.find(
+      (sysAdmin) => sysAdmin.name === name || sysAdmin.email === name,
+    );
   }
 }

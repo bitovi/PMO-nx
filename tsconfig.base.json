@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@common/api/db": ["libs/common/api/db/src/index.ts"],
-      "@common/models": ["libs/common/models/src/index.ts"],
+      "@common/models/*": ["libs/common/models/src/lib/*/index.ts"],
       "@common/ui": ["libs/common/ui/src/index.ts"],
       "@common/utilities": ["libs/common/utilities/src/index.ts"],
       "@features/api/sys-admin/add-restaurant": [

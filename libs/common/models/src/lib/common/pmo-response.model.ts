@@ -1,7 +1,7 @@
-import { HttpStatus } from '@nestjs/common';
+import { PmoHttpStatus } from './pmo-http-status.model';
 
 export interface PmoResponse<T> {
-  status: HttpStatus;
+  status: PmoHttpStatus;
   data: T;
   error?: string;
   message?: string;

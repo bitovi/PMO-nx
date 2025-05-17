@@ -1,42 +1,45 @@
 import { Route } from '@angular/router';
-
-export const AppRouteType = {
-  ADD_RESTAURANT: 'add-restaurant',
-  RESTAURANT_LIST: 'restaurant-list',
-  EDIT_RESTAURANTS: 'edit-restaurant',
-  AUTH: 'auth',
-} as const;
+import {
+  SysAdminRootRoutes,
+  SysAdminDashBoardRoutes,
+} from '@common/models/sys-admin/routes';
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: `/${AppRouteType.AUTH}`,
+    redirectTo: `/${SysAdminRootRoutes.AUTH}`,
     pathMatch: 'full',
   },
   {
-    path: AppRouteType.AUTH,
+    path: SysAdminRootRoutes.AUTH,
     loadComponent: () =>
       import('@features/sys-admin/auth').then((m) => m.SysAdminAuthComponent),
   },
+
   {
-    path: AppRouteType.ADD_RESTAURANT,
-    loadComponent: () =>
-      import('@features/sys-admin/add-restaurant').then(
-        (m) => m.SysAdminAddRestaurantComponent
-      ),
-  },
-  {
-    path: AppRouteType.EDIT_RESTAURANTS,
-    loadComponent: () =>
-      import('@features/sys-admin/edit-restaurant').then(
-        (m) => m.SysAdminEditRestaurantComponent
-      ),
-  },
-  {
-    path: AppRouteType.RESTAURANT_LIST,
-    loadComponent: () =>
-      import('@features/sys-admin/list-restaurants').then(
-        (m) => m.SysAdminListRestaurantsComponent
-      ),
+    path: SysAdminRootRoutes.DAHS_BOARD,
+    children: [
+      {
+        path: SysAdminDashBoardRoutes.ADD_RESTAURANT,
+        loadComponent: () =>
+          import('@features/sys-admin/add-restaurant').then(
+            (m) => m.SysAdminAddRestaurantComponent,
+          ),
+      },
+      {
+        path: SysAdminDashBoardRoutes.EDIT_RESTAURANTS,
+        loadComponent: () =>
+          import('@features/sys-admin/edit-restaurant').then(
+            (m) => m.SysAdminEditRestaurantComponent,
+          ),
+      },
+      {
+        path: SysAdminDashBoardRoutes.RESTAURANT_LIST,
+        loadComponent: () =>
+          import('@features/sys-admin/list-restaurants').then(
+            (m) => m.SysAdminListRestaurantsComponent,
+          ),
+      },
+    ],
   },
 ];
