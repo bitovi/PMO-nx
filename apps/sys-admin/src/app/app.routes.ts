@@ -2,6 +2,7 @@ import { Route } from '@angular/router';
 import {
   SysAdminRootRoutes,
   SysAdminDashBoardRoutes,
+  SysAdminDashBoardLinks,
 } from '@common/models/sys-admin/routes';
 
 export const appRoutes: Route[] = [
@@ -22,6 +23,10 @@ export const appRoutes: Route[] = [
       import('@common/ui/dash-board-layout').then(
         (m) => m.CommonUiDashBoardLayoutComponent,
       ),
+    data: {
+      links: SysAdminDashBoardLinks,
+      title: 'Sys Admin Dash Board',
+    },
     children: [
       {
         path: SysAdminDashBoardRoutes.ADD_RESTAURANT,

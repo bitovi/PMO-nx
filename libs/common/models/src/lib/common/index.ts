@@ -7,3 +7,4 @@ export * from './state.model';
 export * from './pmo-http-status.model';
 export * from './pmo-response.model';
 export * from './sys-admin.model';
+export * from './pmo-dash-board-link.model';

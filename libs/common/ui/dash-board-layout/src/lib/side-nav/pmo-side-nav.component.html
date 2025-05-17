@@ -3,6 +3,7 @@
     <button mat-icon-button (click)="toggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
+    <ng-content select="[topBarTitle]"></ng-content>
   </mat-toolbar-row>
 </mat-toolbar>
 

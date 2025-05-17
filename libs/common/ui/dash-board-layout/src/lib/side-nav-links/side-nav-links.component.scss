@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+:host {
+  mat-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .active {
+      @include mat.list-overrides(
+        (
+          list-item-container-color: var(--mat-sys-secondary-container),
+        )
+      );
+    }
+  }
+}

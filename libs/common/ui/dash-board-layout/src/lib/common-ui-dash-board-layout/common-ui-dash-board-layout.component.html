@@ -1,5 +1,7 @@
 <common-ui-pmo-side-nav>
-  <div topBar></div>
-  <div sideBar>sideBar</div>
-  <div mainContent>mainContent</div>
+  <span topBarTitle> {{ title$ | async }} </span>
+  <common-ui-side-nav-links sideBar [dashBoardLinks]="(links$ | async) ?? []" />
+  <div mainContent>
+    <router-outlet></router-outlet>
+  </div>
 </common-ui-pmo-side-nav>
