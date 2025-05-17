@@ -1,4 +1,4 @@
-import { Component, inject, resource, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -14,7 +14,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { SysAdminAuthService } from '../service/sys-admin-auth.service';
-
+import { PmoHttpStatus } from '@common/models/common';
+import { SysAdminRootRoutes } from '@common/models/sys-admin/routes';
 @Component({
   selector: 'lib-sys-admin-auth',
   standalone: true,
@@ -50,24 +51,30 @@ export class SysAdminAuthComponent {
       const name = this.authForm.controls.name.value;
       this.isLoading.set(true);
 
-      this.authService.login(name).subscribe({
+      this.authService.login({ name }).subscribe({
         next: (response) => {
           this.isLoading.set(false);
-          if (response.success) {
-            this.router.navigate(['/']);
-          } else {
-            this.snackBar.open(response.message || 'Login failed', 'Close', {
-              duration: 3000,
-            });
+          if (response.status !== PmoHttpStatus.OK) {
+            this.openErrorSnackBar(response.message);
+            return;
           }
-        },
-        error: () => {
-          this.isLoading.set(false);
-          this.snackBar.open('An error occurred', 'Close', {
+
+          this.router.navigateByUrl(`/${SysAdminRootRoutes.DAHS_BOARD}`);
+          this.snackBar.open(response.message ?? 'Login success', 'Close', {
             duration: 3000,
           });
         },
+        error: (error) => {
+          this.isLoading.set(false);
+          this.openErrorSnackBar(error.error.message || 'Login failed');
+        },
       });
     }
+  }
+
+  private openErrorSnackBar(message?: string) {
+    this.snackBar.open(message ?? 'Login failed', 'Close', {
+      duration: 3000,
+    });
   }
 }

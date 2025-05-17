@@ -1,1 +1,189 @@
-<p>SysAdminAddRestaurant works!</p>
+<h2>Add New Restaurant</h2>
+
+<form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+  <!-- Basic Restaurant Information -->
+  <div class="form-section">
+    <h3>Restaurant Information</h3>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Restaurant Name</mat-label>
+      <input matInput formControlName="name" placeholder="Restaurant Name" />
+      @if (restaurantForm.get('name')?.hasError('required')) {
+        <mat-error> Name is required </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Restaurant Slug</mat-label>
+      <input matInput formControlName="slug" placeholder="restaurant-slug" />
+      <mat-hint>A unique URL-friendly identifier</mat-hint>
+      @if (restaurantForm.get('slug')?.hasError('required')) {
+        <mat-error> Slug is required </mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <!-- Address Information -->
+  <div class="form-section" formGroupName="address">
+    <h3>Address</h3>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Street</mat-label>
+      <input matInput formControlName="street" placeholder="Street Address" />
+      @if (restaurantForm.get('address.street')?.hasError('required')) {
+        <mat-error> Street is required </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="half-width">
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city" placeholder="City" />
+      @if (restaurantForm.get('address.city')?.hasError('required')) {
+        <mat-error> City is required </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="quarter-width">
+      <mat-label>State</mat-label>
+      <input matInput formControlName="state" placeholder="State" />
+      @if (restaurantForm.get('address.state')?.hasError('required')) {
+        <mat-error> State is required </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="quarter-width">
+      <mat-label>ZIP Code</mat-label>
+      <input matInput formControlName="zip" placeholder="ZIP Code" />
+      @if (restaurantForm.get('address.zip')?.hasError('required')) {
+        <mat-error> ZIP code is required </mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <!-- Menu Information -->
+  <div class="form-section" formGroupName="menu">
+    <h3>Menu</h3>
+
+    <!-- Lunch Menu -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Lunch Menu </mat-panel-title>
+        <mat-panel-description> Add lunch menu items </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <ng-container formArrayName="lunch">
+        @for (item of lunchItems.controls; track $index) {
+          <div [formGroupName]="$index" class="menu-item">
+            <mat-form-field appearance="outline" class="item-name">
+              <mat-label>Item Name</mat-label>
+              <input matInput formControlName="name" placeholder="Item Name" />
+              @if (item.get('name')?.hasError('required')) {
+                <mat-error> Item name is required </mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="item-price">
+              <mat-label>Price</mat-label>
+              <input
+                matInput
+                type="number"
+                formControlName="price"
+                placeholder="0.00"
+              />
+              <span matPrefix>$&nbsp;</span>
+              @if (item.get('price')?.hasError('required')) {
+                <mat-error> Price is required </mat-error>
+              }
+              @if (item.get('price')?.hasError('min')) {
+                <mat-error> Price must be positive </mat-error>
+              }
+            </mat-form-field>
+
+            <button
+              mat-icon-button
+              color="warn"
+              type="button"
+              (click)="removeLunchItem($index)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        } @empty {
+          <p>No lunch items added yet.</p>
+        }
+
+        <button mat-raised-button type="button" (click)="addLunchItem()">
+          <mat-icon>add</mat-icon> Add Lunch Item
+        </button>
+      </ng-container>
+    </mat-expansion-panel>
+
+    <!-- Dinner Menu -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Dinner Menu </mat-panel-title>
+        <mat-panel-description> Add dinner menu items </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <ng-container formArrayName="dinner">
+        @for (item of dinnerItems.controls; track $index) {
+          <div [formGroupName]="$index" class="menu-item">
+            <mat-form-field appearance="outline" class="item-name">
+              <mat-label>Item Name</mat-label>
+              <input matInput formControlName="name" placeholder="Item Name" />
+              @if (item.get('name')?.hasError('required')) {
+                <mat-error> Item name is required </mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="item-price">
+              <mat-label>Price</mat-label>
+              <input
+                matInput
+                type="number"
+                formControlName="price"
+                placeholder="0.00"
+              />
+              <span matPrefix>$&nbsp;</span>
+              @if (item.get('price')?.hasError('required')) {
+                <mat-error> Price is required </mat-error>
+              }
+              @if (item.get('price')?.hasError('min')) {
+                <mat-error> Price must be positive </mat-error>
+              }
+            </mat-form-field>
+
+            <button
+              mat-icon-button
+              color="warn"
+              type="button"
+              (click)="removeDinnerItem($index)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        } @empty {
+          <p>No dinner items added yet.</p>
+        }
+
+        <div class="add-item-button">
+          <button
+            mat-raised-button
+            type="button"
+            color="primary"
+            (click)="addDinnerItem()"
+          >
+            <mat-icon>add</mat-icon> Add Dinner Item
+          </button>
+        </div>
+      </ng-container>
+    </mat-expansion-panel>
+  </div>
+
+  <div class="form-actions">
+    <button mat-button type="button">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">
+      Save Restaurant
+    </button>
+  </div>
+</form>

@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SysAdminAuthApiService } from './sys-admin-auth-api.service';
 
 @Controller('sys-admin/auth')

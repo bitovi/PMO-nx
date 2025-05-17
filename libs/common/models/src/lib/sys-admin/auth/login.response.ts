@@ -1,3 +1,3 @@
-import { SysAdminModel } from '../../sys-admin.model';
+import { SysAdminModel } from '../../common';
 
 export interface SysAdminAuthLoginResponse extends SysAdminModel {}

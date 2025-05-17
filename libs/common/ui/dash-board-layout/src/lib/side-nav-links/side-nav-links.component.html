@@ -1,0 +1,18 @@
+@let links = dashBoardLinks();
+
+@if (links) {
+  <mat-nav-list>
+    @for (link of links; track link) {
+      <mat-list-item
+        [activated]="true"
+        [routerLink]="link.route"
+        [activated]="false"
+        routerLinkActive="active"
+      >
+        <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
+
+        <a matListItemTitle>{{ link.label }}</a>
+      </mat-list-item>
+    }
+  </mat-nav-list>
+}

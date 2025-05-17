@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CommonUiComponent } from './common-ui.component';
+import { PmoSideNavComponent } from './pmo-side-nav.component';
 
-describe('CommonUiComponent', () => {
-  let component: CommonUiComponent;
-  let fixture: ComponentFixture<CommonUiComponent>;
+describe('PmoSideNavComponent', () => {
+  let component: PmoSideNavComponent;
+  let fixture: ComponentFixture<PmoSideNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonUiComponent],
+      imports: [PmoSideNavComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CommonUiComponent);
+    fixture = TestBed.createComponent(PmoSideNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
