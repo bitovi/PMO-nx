@@ -18,6 +18,10 @@ export const appRoutes: Route[] = [
 
   {
     path: SysAdminRootRoutes.DAHS_BOARD,
+    loadComponent: () =>
+      import('@common/ui/dash-board-layout').then(
+        (m) => m.CommonUiDashBoardLayoutComponent,
+      ),
     children: [
       {
         path: SysAdminDashBoardRoutes.ADD_RESTAURANT,

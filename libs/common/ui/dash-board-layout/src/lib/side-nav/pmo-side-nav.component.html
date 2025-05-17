@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="isSidenavOpen()">
+    <ng-content select="[sideBar]"></ng-content>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-card>
+      <ng-content select="[mainContent]" />
+    </mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>

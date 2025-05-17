@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: white,
+    )
+  );
+  @include mat.sidenav-overrides(
+    (
+      container-width: 300px,
+      container-shape: 0,
+    )
+  );
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  mat-toolbar {
+    box-shadow: var(--mat-sys-level1);
+    margin-bottom: 0.25rem;
+  }
+
+  mat-sidenav-container {
+    flex: 1;
+
+    mat-sidenav {
+      background-color: white;
+      padding: 0.5rem;
+      box-shadow: var(--mat-sys-level2);
+    }
+    mat-sidenav-content {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      mat-card {
+        flex: 1;
+        padding: 0.5rem;
+        background-color: white;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
