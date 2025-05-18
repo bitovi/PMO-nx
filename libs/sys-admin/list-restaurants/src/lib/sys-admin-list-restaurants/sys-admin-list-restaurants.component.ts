@@ -5,11 +5,9 @@ import {
   inject,
   OnInit,
   signal,
-  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { MatTableModule, MatTable } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -48,7 +46,6 @@ export interface RestaurantListState {
   ],
   templateUrl: './sys-admin-list-restaurants.component.html',
   styleUrl: './sys-admin-list-restaurants.component.scss',
-  providers: [ListRestaurantsService],
 })
 export class SysAdminListRestaurantsComponent implements OnInit {
   private readonly restaurantsService = inject(ListRestaurantsService);

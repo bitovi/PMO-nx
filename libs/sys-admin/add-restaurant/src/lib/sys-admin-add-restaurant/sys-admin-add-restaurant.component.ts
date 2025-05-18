@@ -66,13 +66,17 @@ interface RestaurantForm {
   templateUrl: './sys-admin-add-restaurant.component.html',
   styleUrl: './sys-admin-add-restaurant.component.scss',
 })
-export class SysAdminAddRestaurantComponent {
+export class SysAdminAddRestaurantComponent implements OnInit {
   private fb = inject(FormBuilder);
   private addRestaurantService = inject(AddRestaurantService);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private toaster = inject(MatSnackBar);
-  restaurantForm: FormGroup<RestaurantForm> = this.initForm();
+  restaurantForm!: FormGroup<RestaurantForm>;
+
+  ngOnInit(): void {
+    this.restaurantForm = this.initForm();
+  }
 
   initForm(): FormGroup<RestaurantForm> {
     return this.fb.group({
