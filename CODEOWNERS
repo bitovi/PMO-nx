@@ -15,6 +15,9 @@
 /libs/api/sys-admin/add-restaurants/ @backend
 
 # Frontend Team Projects
+/libs/common/ui/dash-board-layout/ @frontend
+
+# Frontend Team Projects
 /libs/sys-admin/list-restaurants/ @frontend
 
 # Frontend Team Projects
@@ -53,14 +56,11 @@
 # Backend Team Projects
 /libs/common/api/db/ @backend
 
-# Backend Team Projects
-/libs/common/models/ @backend
+# Common Team Projects
+/libs/common/models/ @common
 
 # Frontend Team Projects
 /libs/pmo/not-found/ @frontend
-
-# Frontend Team Projects
-/libs/common/ui/ @frontend
 
 # Frontend Team Projects
 /libs/pmo/error/ @frontend

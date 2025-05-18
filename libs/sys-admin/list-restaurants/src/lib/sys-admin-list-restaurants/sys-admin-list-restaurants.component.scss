@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  mat-spinner {
+    align-self: center;
+  }
+
+  button {
+    align-self: flex-end;
+  }
+}

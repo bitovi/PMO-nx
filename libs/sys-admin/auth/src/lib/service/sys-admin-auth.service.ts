@@ -1,11 +1,10 @@
-import { Injectable, resource } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-export interface AuthResponse {
-  token?: string;
-  success: boolean;
-  message?: string;
-}
+import {
+  SysAdminAuthLoginRequest,
+  SysAdminAuthLoginResponse,
+} from '@common/models/sys-admin/auth';
+import { PmoResponse } from '@common/models/common';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +14,10 @@ export class SysAdminAuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(name: string) {
-    return this.http.post<AuthResponse>(`${this.API_URL}/auth/login`, {
-      name,
-    });
+  login(request: SysAdminAuthLoginRequest) {
+    return this.http.post<PmoResponse<SysAdminAuthLoginResponse>>(
+      `${this.API_URL}/sys-admin/auth/login`,
+      request,
+    );
   }
 }

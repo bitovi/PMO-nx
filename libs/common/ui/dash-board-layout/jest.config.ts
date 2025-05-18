@@ -1,8 +1,8 @@
 export default {
-  displayName: 'common-ui',
-  preset: '../../../jest.preset.js',
+  displayName: 'common-ui-dash-board-layout',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/common/ui',
+  coverageDirectory: '../../../../coverage/libs/common/ui/dash-board-layout',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
