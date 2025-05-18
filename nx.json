@@ -114,6 +114,11 @@
         "description": "Backend Team Projects",
         "projects": ["tag:backend"],
         "owners": ["@backend"]
+      },
+      {
+        "description": "Common Team Projects",
+        "projects": ["tag:common"],
+        "owners": ["@common"]
       }
     ]
   },
