@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Restaurant, SysAdminModel } from '@common/models/common';
 import { SysAdminsMocks } from './mocks/sys-admins.mock';
 import { mockRestaurants } from './mocks/restaurants.mock';
@@ -30,6 +30,20 @@ export class CommonApiDbService {
   }
 
   getRestaurants(): SysAdminListRestaurantResponse[] {
-    return this.restaurants;
+    return [...this.restaurants];
+  }
+
+  deleteRestaurant(id: string): SysAdminListRestaurantResponse[] {
+    const restaurantIndex = this.restaurants.findIndex(
+      (restaurant) => restaurant.id === id,
+    );
+    if (restaurantIndex === -1) {
+      throw new HttpException(
+        `Restaurant with id ${id} not found`,
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+    this.restaurants.splice(restaurantIndex, 1);
+    return [...this.restaurants];
   }
 }
