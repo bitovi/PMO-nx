@@ -42,4 +42,5 @@ test('can add and remove a new restaurant', async ({ page }) => {
 
   // Verify Test Restaurant is no longer in table
   await expect(newRestaurantRow).toBeHidden();
+  expect(1).toBe(2);
 });
