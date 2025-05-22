@@ -26,6 +26,8 @@ test('can add and remove a new restaurant', async ({ page }) => {
   // Verify new restaurant appears in table
   const restaurantTable = page.locator('table');
   await expect(restaurantTable).toBeVisible();
+  const restaurantTableRows = restaurantTable.locator('tbody tr');
+  await expect(restaurantTableRows).toHaveCount(11);
 
   // Find and verify the new restaurant row
   const newRestaurantRow = restaurantTable.locator('tbody tr', {
