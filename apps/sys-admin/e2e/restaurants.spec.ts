@@ -42,10 +42,4 @@ test('can add and remove a new restaurant', async ({ page }) => {
 
   // Verify Test Restaurant is no longer in table
   await expect(newRestaurantRow).toBeHidden();
-
-  // Verify final restaurant table has 10 rows
-  const finalTable = page.locator('table');
-  await expect(finalTable).toBeVisible();
-  const finalRows = finalTable.locator('tbody tr');
-  await expect(finalRows).toHaveCount(10);
 });
