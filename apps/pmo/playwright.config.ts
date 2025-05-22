@@ -26,7 +26,7 @@ export default defineConfig({
   webServer: {
     command: 'npx nx serve pmo',
     url: 'http://localhost:4200',
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
   projects: [

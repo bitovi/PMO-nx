@@ -26,7 +26,7 @@ export default defineConfig({
   webServer: {
     command: 'npx nx serve sys-admin',
     url: 'http://localhost:4201',
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
   projects: [
