@@ -16,6 +16,6 @@ test('can navigate to restaurants list', async ({ page }) => {
 
   // Expect h1 to contain a substring.
   expect(await page.locator('p').innerText()).toContain(
-    'PmoRestaurantsList works!'
+    'PmoRestaurantsList works!',
   );
-})
+});
