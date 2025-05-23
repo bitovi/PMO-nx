@@ -1,16 +1,20 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Restaurant, SysAdminModel } from '@common/models/common';
+import { OrderModel, Restaurant, SysAdminModel } from '@common/models/common';
 import { SysAdminsMocks } from './mocks/sys-admins.mock';
 import { mockRestaurants } from './mocks/restaurants.mock';
 import {
   SysAdminAddRestaurantRequest,
   SysAdminListRestaurantResponse,
 } from '@common/models/sys-admin/restaurants';
+import { RestaurantLoginResponse } from '@common/models/restaurants';
 
 @Injectable()
 export class CommonApiDbService {
   private sysAdmins: SysAdminModel[] = SysAdminsMocks;
   private restaurants: Restaurant[] = mockRestaurants;
+  private orders: OrderModel[] = [];
+
+  getOrdersByRestaurantId(restaurantId: string): OrderModel[] | undefined {}
 
   getSysAdminByNameOrEmail(name: string): SysAdminModel | undefined {
     return this.sysAdmins.find(
@@ -45,5 +49,9 @@ export class CommonApiDbService {
     }
     this.restaurants.splice(restaurantIndex, 1);
     return [...this.restaurants];
+  }
+
+  getRestaurantByName(name: string): RestaurantLoginResponse | undefined {
+    return this.restaurants.find((restaurant) => restaurant.name === name);
   }
 }

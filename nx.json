@@ -86,7 +86,9 @@
         "libs/api/sys-admin/add-restaurants/*",
         "libs/api/sys-admin/edit-restaurants/*",
         "libs/api/sys-admin/list-restaurants/*",
-        "libs/common/api/db/*"
+        "libs/common/api/db/*",
+        "libs/api/restaurants/auth/*",
+        "libs/api/restaurants/orders/*"
       ],
       "options": {
         "typecheck": {

@@ -21,6 +21,12 @@
         "libs/common/ui/dash-board-layout/src/index.ts"
       ],
       "@common/utilities": ["libs/common/utilities/src/index.ts"],
+      "@features/api/restaurants/auth": [
+        "libs/api/restaurants/auth/src/index.ts"
+      ],
+      "@features/api/restaurants/orders": [
+        "libs/api/restaurants/orders/src/index.ts"
+      ],
       "@features/api/sys-admin/add-restaurant": [
         "libs/api/sys-admin/add-restaurants/src/index.ts"
       ],
