@@ -67,7 +67,8 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "proxyConfig": "apps/sys-admin/proxy.conf.json"
+        "proxyConfig": "apps/sys-admin/proxy.conf.json",
+        "port": 4201
       },
       "continuous": true,
       "dependsOn": [
