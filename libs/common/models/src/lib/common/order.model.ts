@@ -1,3 +1,5 @@
+import { CustomerModel } from './customer.model';
+
 export const OrderStatus = {
   PENDING: 'PENDING',
   IN_PROGRESS: 'IN_PROGRESS',
@@ -11,6 +13,7 @@ export const OrderStatus = {
 export interface OrderModel {
   id: string;
   restaurantId: string;
+  customer: CustomerModel;
   status: (typeof OrderStatus)[keyof typeof OrderStatus];
   items: {
     id: string;

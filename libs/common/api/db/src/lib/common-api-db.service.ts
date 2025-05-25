@@ -7,14 +7,19 @@ import {
   SysAdminListRestaurantResponse,
 } from '@common/models/sys-admin/restaurants';
 import { RestaurantLoginResponse } from '@common/models/restaurants';
+import { ordersMock } from './mocks/orders.mocks';
 
 @Injectable()
 export class CommonApiDbService {
   private sysAdmins: SysAdminModel[] = SysAdminsMocks;
   private restaurants: Restaurant[] = mockRestaurants;
-  private orders: OrderModel[] = [];
+  private orders: OrderModel[] = ordersMock;
 
-  getOrdersByRestaurantId(restaurantId: string): OrderModel[] | undefined {}
+  getOrdersByRestaurantId(restaurantId: string): OrderModel[] {
+    return [
+      ...this.orders.filter((order) => order.restaurantId === restaurantId),
+    ];
+  }
 
   getSysAdminByNameOrEmail(name: string): SysAdminModel | undefined {
     return this.sysAdmins.find(

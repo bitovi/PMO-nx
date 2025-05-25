@@ -1,2 +1,2 @@
-export * from './restaurant-login.request';
-export * from './restaurant-login.response';
+export * from './auth';
+export * from './routes';

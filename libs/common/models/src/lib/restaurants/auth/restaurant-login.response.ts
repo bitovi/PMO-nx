@@ -1,3 +1,3 @@
-import { Restaurant } from '../common';
+import { Restaurant } from '../../common';
 
 export interface RestaurantLoginResponse extends Restaurant {}

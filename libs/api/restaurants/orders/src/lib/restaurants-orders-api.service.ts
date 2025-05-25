@@ -8,7 +8,7 @@ export class RestaurantsOrdersApiService {
 
   getOrders(restaurantId: string): PmoResponse<OrderModel[]> {
     const orders = this.dbService.getOrdersByRestaurantId(restaurantId);
-    if (!orders) {
+    if (orders.length === 0) {
       return {
         status: PmoHttpStatus.NOT_FOUND,
         message: 'No orders found for this restaurant',

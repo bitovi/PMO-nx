@@ -1,30 +1,46 @@
 import { Route } from '@angular/router';
-
-export const AppRoutesType = {
-  AUTH: 'auth',
-  ORDERS: 'orders',
-} as const;
+import {
+  SysAdminDashBoardLinks,
+  RestaurantsAdminDashBoardRoutes,
+  RestaurantsAdminRootRoutes,
+} from '@common/models/restaurants/routes';
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: `/${AppRoutesType.AUTH}`,
+    redirectTo: `/${RestaurantsAdminRootRoutes.DAHS_BOARD}`,
     pathMatch: 'full',
   },
   {
-    path: AppRoutesType.AUTH,
-    loadComponent() {
-      return import('@features/restaurants-admin/auth').then(
-        (m) => m.RestaurantsAdminAuthComponent
-      );
-    },
+    path: RestaurantsAdminRootRoutes.AUTH,
+    loadComponent: () =>
+      import('@features/restaurants-admin/auth').then(
+        (m) => m.RestaurantsAdminAuthComponent,
+      ),
   },
   {
-    path: AppRoutesType.ORDERS,
-    loadComponent() {
-      return import('@features/restaurants-admin/restaurant-orders').then(
-        (m) => m.RestaurantsAdminRestaurantOrdersComponent
-      );
+    path: RestaurantsAdminRootRoutes.DAHS_BOARD,
+    loadComponent: () =>
+      import('@common/ui/dash-board-layout').then(
+        (m) => m.CommonUiDashBoardLayoutComponent,
+      ),
+    children: [
+      {
+        path: '',
+        redirectTo: `${RestaurantsAdminDashBoardRoutes.ORDERS}`,
+        pathMatch: 'full',
+      },
+      {
+        path: `${RestaurantsAdminDashBoardRoutes.ORDERS}`,
+        loadComponent: () =>
+          import('@features/restaurants-admin/restaurant-orders').then(
+            (c) => c.RestaurantsAdminRestaurantOrdersComponent,
+          ),
+      },
+    ],
+    data: {
+      links: SysAdminDashBoardLinks,
+      title: 'Restaurants admin',
     },
   },
 ];
