@@ -1,5 +1,4 @@
 import { AddressModel } from './address.model';
-import { ImageModel } from './image.model';
 import { RestaurantMenuModel } from './restaurant-menu.model';
 
 export interface Restaurant {

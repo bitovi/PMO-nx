@@ -1,0 +1,74 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  mat-spinner {
+    margin: 1rem 0;
+    align-self: center;
+  }
+
+  table {
+    td,
+    th {
+      padding: 0.5rem;
+    }
+
+    .customer-column {
+      > span {
+        display: block;
+        font: var(--mat-sys-title-medium);
+      }
+      div {
+        span {
+          display: block;
+        }
+      }
+    }
+
+    .order-item {
+      > .item-name {
+        display: block;
+        font: var(--mat-sys-title-small);
+      }
+    }
+  }
+
+  .total-price {
+    font: var(--mat-sys-title-large);
+  }
+
+  .status-column {
+    mat-chip.pending,
+    mat-chip.in_progress {
+      @include mat.chips-overrides(
+        (
+          outline-color: var(--mat-sys-tertiary),
+          label-text-color: var(--mat-sys-tertiary),
+        )
+      );
+    }
+
+    mat-chip.completed,
+    mat-chip.delivered,
+    mat-chip.refunded {
+      @include mat.chips-overrides(
+        (
+          outline-color: var(--mat-sys-primary),
+          label-text-color: var(--mat-sys-primary),
+        )
+      );
+    }
+
+    mat-chip.cancelled,
+    mat-chip.returned {
+      @include mat.chips-overrides(
+        (
+          outline-color: var(--mat-sys-error),
+          label-text-color: var(--mat-sys-error),
+        )
+      );
+    }
+  }
+}

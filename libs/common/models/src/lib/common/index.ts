@@ -1,6 +1,5 @@
 export * from './address.model';
 export * from './city.model';
-export * from './image.model';
 export * from './restaurant-menu.model';
 export * from './restaurant.model';
 export * from './state.model';
@@ -8,3 +7,4 @@ export * from './pmo-http-status.model';
 export * from './pmo-response.model';
 export * from './sys-admin.model';
 export * from './pmo-dash-board-link.model';
+export * from './order.model';

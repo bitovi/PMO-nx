@@ -59,7 +59,7 @@ export class SysAdminAuthComponent {
             return;
           }
 
-          this.router.navigateByUrl(`/${SysAdminRootRoutes.DAHS_BOARD}`);
+          this.router.navigate([`/${SysAdminRootRoutes.DAHS_BOARD}`]);
           this.snackBar.open(response.message ?? 'Login success', 'Close', {
             duration: 3000,
           });

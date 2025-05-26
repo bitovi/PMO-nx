@@ -1,1 +1,125 @@
-<p>RestaurantsAdminRestaurantOrders works!</p>
+<h1 class="mat-headline-5">Orders for {{ restaurant()?.name }} Restaurant</h1>
+
+@if (ordersStateService.status() === 'loading') {
+  <mat-spinner />
+} @else {
+  <table
+    mat-table
+    [dataSource]="ordersStateService.orders()"
+    class="orders-table"
+  >
+    <!-- Customer Column -->
+    <ng-container matColumnDef="customer">
+      <th mat-header-cell *matHeaderCellDef>Customer</th>
+      <td mat-cell *matCellDef="let order">
+        <div class="customer-column">
+          <span>{{ order.customer.name }}</span>
+          <div>
+            <span>{{ order.customer.email }}</span>
+            <span>{{ order.customer.phoneNumber }}</span>
+            <span>{{ order.customer.address }}</span>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Items Column -->
+    <ng-container matColumnDef="items">
+      <th mat-header-cell *matHeaderCellDef>Order Details</th>
+      <td mat-cell *matCellDef="let order">
+        <div *ngFor="let item of order.items" class="order-item">
+          <div class="item-name">
+            @if (item.quantity > 1) {
+              (x{{ item.quantity }})
+            }
+            {{ item.name }}
+            {{ item.price | currency }}
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Total Price Column -->
+    <ng-container matColumnDef="totalPrice">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let order">
+        <span class="total-price">{{ order.totalPrice | currency }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let order" class="status-column">
+        @if (order.status.toLowerCase(); as status) {
+          <mat-chip [class]="status">
+            {{ status }}
+          </mat-chip>
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let order">
+        @if (order.status !== orderStatus.DELIVERED) {
+          <button
+            data-testid="status-actions-button"
+            mat-icon-button
+            [matMenuTriggerFor]="moreMenu"
+          >
+            <mat-icon fontIcon="more_vert" />
+          </button>
+        }
+
+        <mat-menu #moreMenu="matMenu">
+          @if (order.status === orderStatus.PENDING) {
+            <button
+              mat-menu-item
+              (click)="moveOrder(order.id, orderStatus.IN_PROGRESS)"
+            >
+              <mat-icon fontIcon="fastfood" />
+              Mark as Preparing
+            </button>
+          }
+          @if (order.status === orderStatus.IN_PROGRESS) {
+            <button
+              mat-menu-item
+              (click)="moveOrder(order.id, orderStatus.COMPLETED)"
+            >
+              <mat-icon fontIcon="check_circle" />
+              Mark as Completed
+            </button>
+          }
+          @if (order.status === orderStatus.COMPLETED) {
+            <button
+              mat-menu-item
+              (click)="moveOrder(order.id, orderStatus.DELIVERED)"
+            >
+              <mat-icon fontIcon="done" />
+              Mark as Delivered
+            </button>
+          }
+
+          <button
+            mat-menu-item
+            (click)="moveOrder(order.id, orderStatus.CANCELLED)"
+          >
+            <mat-icon fontIcon="cancel" />
+            Cancel Order
+          </button>
+          <button
+            mat-menu-item
+            (click)="moveOrder(order.id, orderStatus.REFUNDED)"
+          >
+            <mat-icon fontIcon="delete" />
+            Refunded Order
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+}
