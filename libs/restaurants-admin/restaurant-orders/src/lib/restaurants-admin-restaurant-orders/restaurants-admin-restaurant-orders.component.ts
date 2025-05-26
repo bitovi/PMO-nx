@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -13,6 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RestaurantsAdminOrdersService } from '../services/restaurants-admin-orders.service';
 import { RestaurantsAdminOrdersStateService } from './restaurants-admin-restaurant-orders-state.service';
 import { Router } from '@angular/router';
+import { AuthStateService } from '@features/restaurants-admin/auth';
 
 @Component({
   selector: 'lib-restaurants-admin-restaurant-orders',
@@ -37,7 +39,9 @@ export class RestaurantsAdminRestaurantOrdersComponent {
   orderService = inject(RestaurantsAdminOrdersService);
   router = inject(Router);
   ordersStateService = inject(RestaurantsAdminOrdersStateService);
+  authState = inject(AuthStateService);
 
+  restaurant = toSignal(this.authState.connectedRestaurant$);
   displayedColumns: string[] = [
     'customer',
     'items',
@@ -45,7 +49,6 @@ export class RestaurantsAdminRestaurantOrdersComponent {
     'status',
     'actions',
   ];
-
   orderStatus = OrderStatus;
 
   constructor() {

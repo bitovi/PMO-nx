@@ -1,4 +1,4 @@
-<h1 class="mat-headline-5">Restaurant Orders</h1>
+<h1 class="mat-headline-5">Orders for {{ restaurant()?.name }} Restaurant</h1>
 
 @if (ordersStateService.status() === 'loading') {
   <mat-spinner />
