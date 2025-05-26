@@ -15,6 +15,9 @@
 /libs/api/sys-admin/add-restaurants/ @backend
 
 # Frontend Team Projects
+/libs/restaurants-admin/auth-state/ @frontend
+
+# Frontend Team Projects
 /libs/common/ui/dash-board-layout/ @frontend
 
 # Frontend Team Projects
