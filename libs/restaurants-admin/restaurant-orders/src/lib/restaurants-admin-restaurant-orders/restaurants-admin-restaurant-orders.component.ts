@@ -14,8 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RestaurantsAdminOrdersService } from '../services/restaurants-admin-orders.service';
 import { RestaurantsAdminOrdersStateService } from './restaurants-admin-restaurant-orders-state.service';
 import { Router } from '@angular/router';
-import { AuthStateService } from '@features/restaurants-admin/auth';
-
+import { AuthStateService } from '@features/restaurants-admin/auth-state';
 @Component({
   selector: 'lib-restaurants-admin-restaurant-orders',
   standalone: true,

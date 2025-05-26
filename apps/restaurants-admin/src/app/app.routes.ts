@@ -5,8 +5,7 @@ import {
   RestaurantsAdminRootRoutes,
 } from '@common/models/restaurants/routes';
 
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { authenticatedGuard } from '@features/restaurants-admin/auth';
+import { authenticatedGuard } from '@features/restaurants-admin/auth-state';
 
 export const appRoutes: Route[] = [
   {

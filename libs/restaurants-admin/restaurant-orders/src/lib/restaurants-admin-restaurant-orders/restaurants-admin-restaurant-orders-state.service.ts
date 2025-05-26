@@ -6,7 +6,7 @@ import {
   DestroyRef,
 } from '@angular/core';
 import { OrdersByRestaurantsResponse } from '@common/models/restaurants/orders';
-import { AuthStateService } from '@features/restaurants-admin/auth';
+import { AuthStateService } from '@features/restaurants-admin/auth-state';
 import { RestaurantsAdminOrdersService } from '../services/restaurants-admin-orders.service';
 import {
   BehaviorSubject,

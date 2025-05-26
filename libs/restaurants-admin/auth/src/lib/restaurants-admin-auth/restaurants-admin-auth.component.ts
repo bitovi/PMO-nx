@@ -16,7 +16,7 @@ import { RestaurantsAuthService } from '../services/restaurants-auth.service';
 import { Router } from '@angular/router';
 import { PmoHttpStatus } from '@common/models/common';
 import { RestaurantsAdminRootRoutes } from '@common/models/restaurants/routes';
-import { AuthStateService } from '../services/auth-state.service';
+import { AuthStateService } from '@features/restaurants-admin/auth-state';
 
 @Component({
   selector: 'lib-restaurants-admin-auth',

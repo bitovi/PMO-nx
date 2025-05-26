@@ -29,6 +29,9 @@
 # Frontend Team Projects
 /libs/restaurants-admin/auth/ @frontend
 
+# Backend Team Projects
+/libs/api/restaurants/orders/ @backend
+
 # Frontend Team Projects
 /libs/pmo/restaurant-detail/ @frontend
 
@@ -37,6 +40,9 @@
 
 # Frontend Team Projects
 /libs/pmo/restaurants-list/ @frontend
+
+# Backend Team Projects
+/libs/api/restaurants/auth/ @backend
 
 # Backend Team Projects
 /libs/api/sys-admin/auth/ @backend
