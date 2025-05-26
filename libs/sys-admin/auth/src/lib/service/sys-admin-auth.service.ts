@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
   SysAdminAuthLoginRequest,
@@ -11,8 +11,7 @@ import { PmoResponse } from '@common/models/common';
 })
 export class SysAdminAuthService {
   private readonly API_URL = '/api'; // You can adjust this base URL as needed
-
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   login(request: SysAdminAuthLoginRequest) {
     return this.http.post<PmoResponse<SysAdminAuthLoginResponse>>(

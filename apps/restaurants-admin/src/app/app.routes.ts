@@ -5,6 +5,9 @@ import {
   RestaurantsAdminRootRoutes,
 } from '@common/models/restaurants/routes';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { authenticatedGuard } from '@features/restaurants-admin/auth';
+
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -20,10 +23,16 @@ export const appRoutes: Route[] = [
   },
   {
     path: RestaurantsAdminRootRoutes.DAHS_BOARD,
+    canActivate: [authenticatedGuard],
     loadComponent: () =>
       import('@common/ui/dash-board-layout').then(
         (m) => m.CommonUiDashBoardLayoutComponent,
       ),
+    data: {
+      links: SysAdminDashBoardLinks,
+      title: 'Restaurants admin',
+    },
+
     children: [
       {
         path: '',
@@ -38,9 +47,5 @@ export const appRoutes: Route[] = [
           ),
       },
     ],
-    data: {
-      links: SysAdminDashBoardLinks,
-      title: 'Restaurants admin',
-    },
   },
 ];

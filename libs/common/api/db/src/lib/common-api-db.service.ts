@@ -7,6 +7,7 @@ import {
   SysAdminListRestaurantResponse,
 } from '@common/models/sys-admin/restaurants';
 import { RestaurantLoginResponse } from '@common/models/restaurants';
+import { OrdersByRestaurantsResponse } from '@common/models/restaurants/orders';
 import { ordersMock } from './mocks/orders.mocks';
 
 @Injectable()
@@ -15,7 +16,22 @@ export class CommonApiDbService {
   private restaurants: Restaurant[] = mockRestaurants;
   private orders: OrderModel[] = ordersMock;
 
-  getOrdersByRestaurantId(restaurantId: string): OrderModel[] {
+  updateOrderStatus(
+    orderId: string,
+    newStatus: OrderModel['status'],
+  ): OrderModel | undefined {
+    const orderIndex = this.orders.findIndex((order) => order.id === orderId);
+    if (orderIndex === -1) {
+      return undefined;
+    }
+    const updatedOrder: OrderModel = {
+      ...this.orders[orderIndex],
+      status: newStatus,
+    };
+    this.orders.splice(orderIndex, 1, updatedOrder);
+    return updatedOrder;
+  }
+  getOrdersByRestaurantId(restaurantId: string): OrdersByRestaurantsResponse[] {
     return [
       ...this.orders.filter((order) => order.restaurantId === restaurantId),
     ];
