@@ -39,6 +39,7 @@
       ],
       "@features/pmo/error": ["libs/pmo/error/src/index.ts"],
       "@features/pmo/home": ["libs/pmo/home/src/index.ts"],
+      "@features/pmo/main-layout": ["libs/pmo/main-layout/src/index.ts"],
       "@features/pmo/my-order-history": [
         "libs/pmo/my-order-history/src/index.ts"
       ],

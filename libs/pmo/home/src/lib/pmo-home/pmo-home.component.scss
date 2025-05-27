@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+
+    .hero-text-container {
+      padding: 1rem;
+    }
+  }
+}
