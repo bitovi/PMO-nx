@@ -46,7 +46,7 @@ interface NormalizedOptions {
 type PlaywrightTargets = Pick<ProjectConfiguration, 'targets' | 'metadata'>;
 
 function readTargetsCache(
-  cachePath: string
+  cachePath: string,
 ): Record<string, PlaywrightTargets> {
   try {
     return process.env.NX_CACHE_PROJECT_GRAPH !== 'false'
@@ -59,7 +59,7 @@ function readTargetsCache(
 
 function writeTargetsToCache(
   cachePath: string,
-  results: Record<string, PlaywrightTargets>
+  results: Record<string, PlaywrightTargets>,
 ) {
   writeJsonFile(cachePath, results);
 }
@@ -72,7 +72,7 @@ export const createNodesV2: CreateNodesV2<PlaywrightPluginOptions> = [
     const optionsHash = hashObject(normalizedOptions);
     const cachePath = join(
       workspaceDataDirectory,
-      `playwright-${optionsHash}.hash`
+      `playwright-${optionsHash}.hash`,
     );
     const targetsCache = readTargetsCache(cachePath);
     try {
@@ -82,11 +82,11 @@ export const createNodesV2: CreateNodesV2<PlaywrightPluginOptions> = [
             configFile,
             normalizedOptions,
             context,
-            targetsCache
+            targetsCache,
           ),
         configFilePaths,
         options,
-        context
+        context,
       );
     } finally {
       writeTargetsToCache(cachePath, targetsCache);
@@ -102,7 +102,7 @@ export const createNodes: CreateNodes<PlaywrightPluginOptions> = [
   playwrightConfigGlob,
   async (configFile, options, context) => {
     logger.warn(
-      '`createNodes` is deprecated. Update your plugin to utilize createNodesV2 instead. In Nx 20, this will change to the createNodesV2 API.'
+      '`createNodes` is deprecated. Update your plugin to utilize createNodesV2 instead. In Nx 20, this will change to the createNodesV2 API.',
     );
     return createNodesInternal(configFile, options ?? {}, context, {});
   },
@@ -112,7 +112,7 @@ async function createNodesInternal(
   configFilePath: string,
   options: PlaywrightPluginOptions,
   context: CreateNodesContext,
-  targetsCache: Record<string, PlaywrightTargets>
+  targetsCache: Record<string, PlaywrightTargets>,
 ) {
   const projectRoot = dirname(configFilePath);
 
@@ -131,14 +131,14 @@ async function createNodesInternal(
     projectRoot,
     normalizedOptions,
     context,
-    [getLockFileName(detectPackageManager(context.workspaceRoot))]
+    [getLockFileName(detectPackageManager(context.workspaceRoot))],
   );
 
   targetsCache[hash] ??= await buildPlaywrightTargets(
     configFilePath,
     projectRoot,
     normalizedOptions,
-    context
+    context,
   );
   const { targets, metadata } = targetsCache[hash];
 
@@ -157,7 +157,7 @@ async function buildPlaywrightTargets(
   configFilePath: string,
   projectRoot: string,
   options: NormalizedOptions,
-  context: CreateNodesContext
+  context: CreateNodesContext,
 ): Promise<PlaywrightTargets> {
   // Playwright forbids importing the `@playwright/test` module twice. This would affect running the tests,
   // but we're just reading the config so let's delete the variable they are using to detect this.
@@ -165,7 +165,7 @@ async function buildPlaywrightTargets(
   delete (process as any)['__pw_initiator__'];
 
   const playwrightConfig = await loadConfigFile<PlaywrightTestConfig>(
-    join(context.workspaceRoot, configFilePath)
+    join(context.workspaceRoot, configFilePath),
   );
 
   const namedInputs = getNamedInputs(projectRoot, context);
@@ -214,7 +214,7 @@ async function buildPlaywrightTargets(
       testOutput,
       reporterOutputs,
       context.workspaceRoot,
-      projectRoot
+      projectRoot,
     ),
   };
 
@@ -232,7 +232,7 @@ async function buildPlaywrightTargets(
         testOutput,
         reporterOutputs,
         context.workspaceRoot,
-        projectRoot
+        projectRoot,
       ),
     };
 
@@ -255,7 +255,7 @@ async function buildPlaywrightTargets(
           .replace(/[/\\]/g, '-')
           .replace(/\./g, '-');
         const relativeSpecFilePath = normalizePath(
-          relative(projectRoot, testFile)
+          relative(projectRoot, testFile),
         );
         const targetName = `${options.ciTargetName}--${relativeSpecFilePath}`;
         ciTargetGroup.push(targetName);
@@ -268,7 +268,7 @@ async function buildPlaywrightTargets(
           const relativeImports = collectRelativeImports(
             testFile,
             importLocator,
-            visitedFiles
+            visitedFiles,
           );
 
           inputs = [
@@ -292,13 +292,13 @@ async function buildPlaywrightTargets(
             reporterOutputs,
             context.workspaceRoot,
             projectRoot,
-            outputSubfolder
+            outputSubfolder,
           ),
           command: `${
             baseTargetConfig.command
           } ${relativeSpecFilePath} --output=${join(
             testOutput,
-            outputSubfolder
+            outputSubfolder,
           )}`,
           metadata: {
             technologies: ['playwright'],
@@ -323,7 +323,7 @@ async function buildPlaywrightTargets(
         context,
         path: testDir,
         config: playwrightConfig,
-      }
+      },
     );
 
     targets[options.ciTargetName] ??= {};
@@ -365,11 +365,11 @@ async function forEachTestFile(
     context: CreateNodesContext;
     path: string;
     config: PlaywrightTestConfig;
-  }
+  },
 ) {
   const files = await getFilesInDirectoryUsingContext(
     opts.context.workspaceRoot,
-    opts.path
+    opts.path,
   );
   const matcher = createMatcher(opts.config.testMatch ?? []);
   const ignoredMatcher = opts.config.testIgnore
@@ -385,7 +385,7 @@ async function forEachTestFile(
 function createMatcher(pattern: string | RegExp | Array<string | RegExp>) {
   if (Array.isArray(pattern)) {
     const matchers: ((path: string) => boolean)[] = pattern.map((p) =>
-      createMatcher(p)
+      createMatcher(p),
     );
     return (path: string) => matchers.some((m) => m(path));
   } else if (pattern instanceof RegExp) {
@@ -396,7 +396,7 @@ function createMatcher(pattern: string | RegExp | Array<string | RegExp>) {
         return minimatch(path, pattern);
       } catch (e) {
         throw new Error(
-          `Error matching ${path} with ${pattern}: ${(e as Error).message}`
+          `Error matching ${path} with ${pattern}: ${(e as Error).message}`,
         );
       }
     };
@@ -422,7 +422,7 @@ function getTestOutput(playwrightConfig: PlaywrightTestConfig): string {
 }
 
 function getReporterOutputs(
-  playwrightConfig: PlaywrightTestConfig
+  playwrightConfig: PlaywrightTestConfig,
 ): Array<[string, string]> {
   const outputs: Array<[string, string]> = [];
 
@@ -460,23 +460,23 @@ function getTargetOutputs(
   reporterOutputs: Array<[string, string]>,
   workspaceRoot: string,
   projectRoot: string,
-  subFolder?: string
+  subFolder?: string,
 ): string[] {
   const outputs = new Set<string>();
   outputs.add(
     normalizeOutput(
       addSubfolderToOutput(testOutput, subFolder),
       workspaceRoot,
-      projectRoot
-    )
+      projectRoot,
+    ),
   );
   for (const [, output] of reporterOutputs) {
     outputs.add(
       normalizeOutput(
         addSubfolderToOutput(output, subFolder),
         workspaceRoot,
-        projectRoot
-      )
+        projectRoot,
+      ),
     );
   }
   return Array.from(outputs);
@@ -492,7 +492,7 @@ function addSubfolderToOutput(output: string, subfolder?: string): string {
 }
 
 function getWebserverCommandTasks(
-  playwrightConfig: PlaywrightTestConfig
+  playwrightConfig: PlaywrightTestConfig,
 ): Array<{ project: string; target: string }> {
   if (!playwrightConfig.webServer) {
     return [];
@@ -542,7 +542,7 @@ function parseTaskFromCommand(command: string): {
 }
 
 function getDependsOn(
-  tasks: Array<{ project: string; target: string }>
+  tasks: Array<{ project: string; target: string }>,
 ): TargetConfiguration['dependsOn'] {
   const projectsPerTask = new Map<string, string[]>();
 
@@ -562,17 +562,17 @@ function getDependsOn(
 function normalizeOutput(
   path: string,
   workspaceRoot: string,
-  projectRoot: string
+  projectRoot: string,
 ): string {
   const fullProjectRoot = resolve(workspaceRoot, projectRoot);
   const fullPath = resolve(fullProjectRoot, path);
   const pathRelativeToProjectRoot = normalizePath(
-    relative(fullProjectRoot, fullPath)
+    relative(fullProjectRoot, fullPath),
   );
   if (pathRelativeToProjectRoot.startsWith('..')) {
     return joinPathFragments(
       '{workspaceRoot}',
-      relative(workspaceRoot, fullPath)
+      relative(workspaceRoot, fullPath),
     );
   }
   return joinPathFragments('{projectRoot}', pathRelativeToProjectRoot);
@@ -580,7 +580,7 @@ function normalizeOutput(
 
 function getOutputEnvVars(
   reporterOutputs: Array<[string, string]>,
-  outputSubfolder: string
+  outputSubfolder: string,
 ): Record<string, string> {
   const env: Record<string, string> = {};
   for (const [reporter, output] of reporterOutputs) {
@@ -603,7 +603,7 @@ function getOutputEnvVars(
 function collectRelativeImports(
   filePath: string,
   importLocator: TypeScriptImportLocator,
-  visitedFiles: Set<string> = new Set()
+  visitedFiles: Set<string> = new Set(),
 ): string[] {
   const normalizedPath = normalizePath(filePath);
 
@@ -616,21 +616,21 @@ function collectRelativeImports(
   const visitorFunc = (
     importExpression: string,
     currentFilePath: string,
-    type: DependencyType
+    type: DependencyType,
   ) => {
     if (
       importExpression.startsWith('./') ||
       importExpression.startsWith('../')
     ) {
       const resolvedPath = normalizePath(
-        join(dirname(currentFilePath), importExpression)
+        join(dirname(currentFilePath), importExpression),
       );
       const withTsExt = resolvedPath.endsWith('.ts')
         ? resolvedPath
         : resolvedPath + '.ts';
       imports.push(withTsExt);
       imports.push(
-        ...collectRelativeImports(withTsExt, importLocator, visitedFiles)
+        ...collectRelativeImports(withTsExt, importLocator, visitedFiles),
       );
     }
   };
