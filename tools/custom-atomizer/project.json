@@ -1,0 +1,41 @@
+{
+  "name": "custom-atomizer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/custom-atomizer/src",
+  "projectType": "library",
+  "tags": ["infra"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/custom-atomizer",
+        "main": "tools/custom-atomizer/src/index.ts",
+        "tsConfig": "tools/custom-atomizer/tsconfig.lib.json",
+        "assets": [
+          "tools/custom-atomizer/*.md",
+          {
+            "input": "./tools/custom-atomizer/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/custom-atomizer/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/custom-atomizer",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tools/custom-atomizer",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

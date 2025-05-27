@@ -56,6 +56,9 @@
 # Frontend Team Projects
 /libs/common/utilities/ @frontend
 
+# Infra Team Projects
+/tools/custom-atomizer/ @infra
+
 # Frontend Team Projects
 /libs/pmo/order-detail/ @frontend
 

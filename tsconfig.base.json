@@ -68,7 +68,8 @@
       ],
       "@features/sys-admin/list-restaurants": [
         "libs/sys-admin/list-restaurants/src/index.ts"
-      ]
+      ],
+      "@pmo-nx/custom-atomizer": ["tools/custom-atomizer/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
