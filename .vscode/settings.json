@@ -10,5 +10,6 @@
       "file": "../.github/copilot-instructions.md"
     }
   ],
-  "nxConsole.generateAiAgentRules": true
+  "nxConsole.generateAiAgentRules": true,
+  "eslint.validate": ["json"]
 }
