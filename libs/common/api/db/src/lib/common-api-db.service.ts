@@ -75,4 +75,8 @@ export class CommonApiDbService {
   getRestaurantByName(name: string): RestaurantLoginResponse | undefined {
     return this.restaurants.find((restaurant) => restaurant.name === name);
   }
+
+  getAllOrders(): OrderModel[] {
+    return [...this.orders];
+  }
 }
