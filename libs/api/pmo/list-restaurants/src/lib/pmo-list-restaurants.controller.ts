@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PmoListRestaurantsService } from './pmo-list-restaurants.service';
 import { PmoResponse, Restaurant } from '@common/models/common';
 
@@ -11,5 +11,10 @@ export class PmoListRestaurantsController {
   @Get()
   getRestaurants(): PmoResponse<Restaurant[]> {
     return this.pmoListRestaurantsService.getRestaurants();
+  }
+
+  @Get(':id')
+  getRestaurantById(@Param('id') id: string): PmoResponse<Restaurant | null> {
+    return this.pmoListRestaurantsService.getRestaurantById(id);
   }
 }

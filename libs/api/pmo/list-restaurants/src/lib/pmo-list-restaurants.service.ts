@@ -14,4 +14,22 @@ export class PmoListRestaurantsService {
       status: PmoHttpStatus.OK,
     };
   }
+
+  getRestaurantById(id: string): PmoResponse<Restaurant | null> {
+    const restaurant = this.dbService.getRestaurants().find((r) => r.id === id);
+
+    if (!restaurant) {
+      return {
+        data: null,
+        message: `Restaurant with ID ${id} not found`,
+        status: PmoHttpStatus.NOT_FOUND,
+      };
+    }
+
+    return {
+      data: restaurant,
+      message: 'Restaurant retrieved successfully',
+      status: PmoHttpStatus.OK,
+    };
+  }
 }

@@ -33,7 +33,7 @@ export const appRoutes: Route[] = [
           ),
       },
       {
-        path: PmoRootRoutes.ORDER_DETAIL,
+        path: `${PmoRootRoutes.ORDER_DETAIL}/:id`,
         loadComponent: () =>
           import('@features/pmo/order-detail').then(
             (m) => m.PmoOrderDetailComponent,

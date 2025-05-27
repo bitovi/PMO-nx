@@ -1,1 +1,268 @@
-<p>PmoRestaurantDetail works!</p>
+<div class="restaurant-detail-container">
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="loading$ | async">
+    <mat-spinner></mat-spinner>
+    <p>Loading restaurant details...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-container" *ngIf="error$ | async as errorMessage">
+    <mat-card class="error-card">
+      <mat-card-content>
+        <mat-icon color="warn">error_outline</mat-icon>
+        <p>{{ errorMessage }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Restaurant Details -->
+  <div class="content-container" *ngIf="restaurant">
+    <mat-card class="restaurant-info-card">
+      <mat-card-header>
+        <mat-card-title>{{ restaurant.name }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ restaurant.address.street }}, {{ restaurant.address.city }},
+          {{ restaurant.address.state }} {{ restaurant.address.zip }}
+        </mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <div class="order-section">
+      <mat-card class="menu-card">
+        <mat-card-header>
+          <mat-card-title>Menu</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-tab-group>
+            <!-- Lunch Menu -->
+            <mat-tab label="Lunch Menu">
+              <div class="menu-items">
+                <mat-card
+                  class="menu-item-card"
+                  *ngFor="let item of restaurant.menu.lunch"
+                >
+                  <mat-card-content>
+                    <div class="menu-item-content">
+                      <div class="menu-item-info">
+                        <h3>{{ item.name }}</h3>
+                        <p class="price">${{ item.price.toFixed(2) }}</p>
+                      </div>
+                      <button
+                        mat-icon-button
+                        color="primary"
+                        (click)="
+                          addItem({
+                            id: item.name,
+                            name: item.name,
+                            price: item.price,
+                          })
+                        "
+                      >
+                        <mat-icon>add_shopping_cart</mat-icon>
+                      </button>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </mat-tab>
+
+            <!-- Dinner Menu -->
+            <mat-tab label="Dinner Menu">
+              <div class="menu-items">
+                <mat-card
+                  class="menu-item-card"
+                  *ngFor="let item of restaurant.menu.dinner"
+                >
+                  <mat-card-content>
+                    <div class="menu-item-content">
+                      <div class="menu-item-info">
+                        <h3>{{ item.name }}</h3>
+                        <p class="price">${{ item.price.toFixed(2) }}</p>
+                      </div>
+                      <button
+                        mat-icon-button
+                        color="primary"
+                        (click)="
+                          addItem({
+                            id: item.name,
+                            name: item.name,
+                            price: item.price,
+                          })
+                        "
+                      >
+                        <mat-icon>add_shopping_cart</mat-icon>
+                      </button>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+
+      <form
+        [formGroup]="orderForm"
+        (ngSubmit)="submitOrder()"
+        class="order-form"
+      >
+        <mat-card class="cart-card">
+          <mat-card-header>
+            <mat-card-title>Your Order</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="cart-items" *ngIf="items.length > 0; else emptyCart">
+              <div
+                class="cart-item"
+                *ngFor="let item of items.controls; let i = index"
+                [formGroup]="item"
+              >
+                <div class="item-details">
+                  <span class="item-name">{{ item.get('name')?.value }}</span>
+                  <span class="item-price"
+                    >${{
+                      (
+                        (item.get('price')?.value ?? 1) *
+                        (item.get('quantity')?.value ?? 1)
+                      ).toFixed(2)
+                    }}</span
+                  >
+                </div>
+                <div class="quantity-controls">
+                  <button
+                    type="button"
+                    mat-icon-button
+                    (click)="adjustQuantity(i, -1)"
+                  >
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span class="quantity">{{
+                    item.get('quantity')?.value
+                  }}</span>
+                  <button
+                    type="button"
+                    mat-icon-button
+                    (click)="adjustQuantity(i, 1)"
+                  >
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <button
+                    type="button"
+                    mat-icon-button
+                    color="warn"
+                    (click)="removeItem(i)"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="total-row">
+                <span class="total-label">Total:</span>
+                <span class="total-price">${{ totalPrice.toFixed(2) }}</span>
+              </div>
+            </div>
+            <ng-template #emptyCart>
+              <div class="empty-cart">
+                <mat-icon>shopping_cart</mat-icon>
+                <p>Your cart is empty.</p>
+                <p>Please add some items from the menu.</p>
+              </div>
+            </ng-template>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-expansion-panel [expanded]="items.length > 0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Customer Information</mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div formGroupName="customer" class="customer-form">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Full Name</mat-label>
+              <input
+                matInput
+                formControlName="name"
+                placeholder="Enter your full name"
+              />
+              <mat-error *ngIf="customerForm.get('name')?.hasError('required')">
+                Name is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Enter your email"
+                type="email"
+              />
+              <mat-error
+                *ngIf="customerForm.get('email')?.hasError('required')"
+              >
+                Email is required
+              </mat-error>
+              <mat-error *ngIf="customerForm.get('email')?.hasError('email')">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                formControlName="phoneNumber"
+                placeholder="Enter your phone number"
+              />
+              <mat-error
+                *ngIf="customerForm.get('phoneNumber')?.hasError('required')"
+              >
+                Phone number is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Delivery Address</mat-label>
+              <textarea
+                matInput
+                formControlName="address"
+                placeholder="Enter your delivery address"
+                rows="3"
+              ></textarea>
+              <mat-error
+                *ngIf="customerForm.get('address')?.hasError('required')"
+              >
+                Delivery address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+
+        <div class="form-actions">
+          <button
+            mat-button
+            type="button"
+            (click)="clearItems()"
+            [disabled]="items.length === 0 || (submitting$ | async)"
+          >
+            Clear Cart
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="items.length === 0 || (submitting$ | async)"
+          >
+            <mat-icon>send</mat-icon>
+            Place Order
+            <mat-spinner
+              *ngIf="submitting$ | async"
+              diameter="20"
+              class="button-spinner"
+            ></mat-spinner>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
