@@ -13,5 +13,5 @@ test('has title', async ({ page }) => {
   // Check that there are restaurant rows
   const tableRows = restaurantTable.locator('tbody tr');
   const count = await tableRows.count();
-  expect(count).toBeGreaterThan(2);
+  expect(count).toBeGreaterThan(200);
 });
