@@ -88,7 +88,10 @@
         "libs/api/sys-admin/list-restaurants/*",
         "libs/common/api/db/*",
         "libs/api/restaurants/auth/*",
-        "libs/api/restaurants/orders/*"
+        "libs/api/restaurants/orders/*",
+        "libs/api/pmo/list-restaurants/*",
+        "libs/api/pmo/order-history/*",
+        "libs/api/pmo/order/*"
       ],
       "options": {
         "typecheck": {

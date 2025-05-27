@@ -21,6 +21,13 @@
         "libs/common/ui/dash-board-layout/src/index.ts"
       ],
       "@common/utilities": ["libs/common/utilities/src/index.ts"],
+      "@features/api/pmo/list-restaurants": [
+        "libs/api/pmo/list-restaurants/src/index.ts"
+      ],
+      "@features/api/pmo/order": ["libs/api/pmo/order/src/index.ts"],
+      "@features/api/pmo/order-history": [
+        "libs/api/pmo/order-history/src/index.ts"
+      ],
       "@features/api/restaurants/auth": [
         "libs/api/restaurants/auth/src/index.ts"
       ],
