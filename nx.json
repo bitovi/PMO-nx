@@ -147,6 +147,11 @@
         "description": "Common Team Projects",
         "projects": ["tag:common"],
         "owners": ["@common"]
+      },
+      {
+        "description": "Infra Team Projects",
+        "projects": ["tag:infra"],
+        "owners": ["@infra"]
       }
     ]
   },
