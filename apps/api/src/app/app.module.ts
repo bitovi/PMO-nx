@@ -10,6 +10,8 @@ import { RestaurantsOrdersApiModule } from '@features/api/restaurants/orders';
 import { CommonApiDbModule } from '@common/api/db';
 import { PmoListRestaurantsModule } from '@features/api/pmo/list-restaurants';
 import { PmoListOrderHistoryModule } from '@features/api/pmo/order-history';
+import { PmoListOrderModule } from '@features/api/pmo/order';
+
 @Module({
   imports: [
     SysAdminAuthApiModule,
@@ -20,6 +22,7 @@ import { PmoListOrderHistoryModule } from '@features/api/pmo/order-history';
     RestaurantsOrdersApiModule,
     PmoListRestaurantsModule,
     PmoListOrderHistoryModule,
+    PmoListOrderModule,
     CommonApiDbModule,
   ],
   controllers: [AppController],

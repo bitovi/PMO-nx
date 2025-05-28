@@ -7,6 +7,5 @@ import { CommonApiDbModule } from '@common/api/db';
   imports: [CommonApiDbModule],
   controllers: [PmoListOrderController],
   providers: [PmoListOrderService],
-  exports: [PmoListOrderService],
 })
 export class PmoListOrderModule {}

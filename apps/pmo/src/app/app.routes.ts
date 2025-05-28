@@ -26,18 +26,9 @@ export const appRoutes: Route[] = [
           ),
       },
       {
-        path: PmoRootRoutes.RESTAURANT_DETAIL,
+        path: `${PmoRootRoutes.ORDER}/:restaurantId`,
         loadComponent: () =>
-          import('@features/pmo/restaurant-detail').then(
-            (m) => m.PmoRestaurantDetailComponent,
-          ),
-      },
-      {
-        path: `${PmoRootRoutes.ORDER_DETAIL}/:id`,
-        loadComponent: () =>
-          import('@features/pmo/order-detail').then(
-            (m) => m.PmoOrderDetailComponent,
-          ),
+          import('@features/pmo/order').then((m) => m.PmoOrderComponent),
       },
       {
         path: PmoRootRoutes.MY_ORDERS_HISTORY,
@@ -50,11 +41,6 @@ export const appRoutes: Route[] = [
         path: PmoRootRoutes.NOT_FOUND,
         loadComponent: () =>
           import('@features/pmo/not-found').then((m) => m.PmoNotFoundComponent),
-      },
-      {
-        path: PmoRootRoutes.ERROR,
-        loadComponent: () =>
-          import('@features/pmo/error').then((m) => m.PmoErrorComponent),
       },
     ],
   },

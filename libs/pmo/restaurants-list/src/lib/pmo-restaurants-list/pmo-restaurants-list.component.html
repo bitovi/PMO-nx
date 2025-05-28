@@ -30,10 +30,7 @@
   @if (!isLoading() && !error() && restaurants().length > 0) {
     <div class="restaurant-grid">
       @for (restaurant of restaurants(); track restaurant.id) {
-        <mat-card
-          class="restaurant-card"
-          (click)="navigateToRestaurant(restaurant.slug)"
-        >
+        <mat-card class="restaurant-card">
           <mat-card-header>
             <mat-card-title>{{ restaurant.name }}</mat-card-title>
             <mat-card-subtitle
@@ -98,11 +95,9 @@
             <button
               mat-button
               color="primary"
-              (click)="
-                navigateToRestaurant(restaurant.slug); $event.stopPropagation()
-              "
+              routerLink="/{{ pmoRoutes.ORDER }}/{{ restaurant.id }}"
             >
-              VIEW DETAILS
+              Order Now
             </button>
           </mat-card-actions>
         </mat-card>

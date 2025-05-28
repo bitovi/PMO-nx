@@ -6,9 +6,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
-import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { RouterLink } from '@angular/router';
+import { PmoRootRoutes } from '@common/models/pmo/routes';
 
 @Component({
   selector: 'lib-pmo-restaurants-list',
@@ -21,13 +22,14 @@ import { MatDividerModule } from '@angular/material/divider';
     MatChipsModule,
     MatIconModule,
     MatDividerModule,
+    RouterLink,
   ],
   templateUrl: './pmo-restaurants-list.component.html',
   styleUrl: './pmo-restaurants-list.component.scss',
 })
 export class PmoRestaurantsListComponent implements OnInit {
   private restaurantsService = inject(RestaurantsService);
-  private router = inject(Router);
+  pmoRoutes = PmoRootRoutes;
 
   restaurants = signal<Restaurant[]>([]);
   isLoading = signal<boolean>(false);
@@ -52,9 +54,5 @@ export class PmoRestaurantsListComponent implements OnInit {
         console.error('Error fetching restaurants:', err);
       },
     });
-  }
-
-  navigateToRestaurant(slug: string): void {
-    this.router.navigate(['/restaurants', slug]);
   }
 }
