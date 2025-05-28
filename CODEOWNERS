@@ -3,94 +3,94 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Frontend Team Projects
-/libs/restaurants-admin/restaurant-orders/ @ilyassFouih
+/libs/restaurants-admin/restaurant-orders/ @frontend
 
 # Backend Team Projects
-/libs/api/sys-admin/edit-restaurants/ @jordanpowell88
+/libs/api/sys-admin/edit-restaurants/ @backend
 
 # Backend Team Projects
-/libs/api/sys-admin/list-restaurants/ @jordanpowell88
+/libs/api/sys-admin/list-restaurants/ @backend
 
 # Backend Team Projects
-/libs/api/sys-admin/add-restaurants/ @jordanpowell88
+/libs/api/sys-admin/add-restaurants/ @backend
 
 # Frontend Team Projects
-/libs/restaurants-admin/auth-state/ @ilyassFouih
+/libs/restaurants-admin/auth-state/ @frontend
 
 # Frontend Team Projects
-/libs/common/ui/dash-board-layout/ @ilyassFouih
+/libs/common/ui/dash-board-layout/ @frontend
 
 # Frontend Team Projects
-/libs/sys-admin/list-restaurants/ @ilyassFouih
+/libs/sys-admin/list-restaurants/ @frontend
 
 # Frontend Team Projects
-/libs/sys-admin/edit-restaurant/ @ilyassFouih
+/libs/sys-admin/edit-restaurant/ @frontend
 
 # Backend Team Projects
-/libs/api/pmo/list-restaurants/ @jordanpowell88
+/libs/api/pmo/list-restaurants/ @backend
 
 # Frontend Team Projects
-/libs/sys-admin/add-restaurant/ @ilyassFouih
+/libs/sys-admin/add-restaurant/ @frontend
 
 # Frontend Team Projects
-/libs/restaurants-admin/auth/ @ilyassFouih
+/libs/restaurants-admin/auth/ @frontend
 
 # Backend Team Projects
-/libs/api/restaurants/orders/ @jordanpowell88
+/libs/api/restaurants/orders/ @backend
 
 # Backend Team Projects
-/libs/api/pmo/order-history/ @jordanpowell88
+/libs/api/pmo/order-history/ @backend
 
 # Frontend Team Projects
-/libs/pmo/my-order-history/ @ilyassFouih
+/libs/pmo/my-order-history/ @frontend
 
 # Frontend Team Projects
-/libs/pmo/restaurants-list/ @ilyassFouih
+/libs/pmo/restaurants-list/ @frontend
 
 # Backend Team Projects
-/libs/api/restaurants/auth/ @jordanpowell88
+/libs/api/restaurants/auth/ @backend
 
 # Backend Team Projects
-/libs/api/sys-admin/auth/ @jordanpowell88
+/libs/api/sys-admin/auth/ @backend
 
 # Frontend Team Projects
-/apps/restaurants-admin/ @ilyassFouih
+/apps/restaurants-admin/ @frontend
 
 # Frontend Team Projects
-/libs/common/utilities/ @ilyassFouih
+/libs/common/utilities/ @frontend
 
 # Infra Team Projects
-/tools/custom-atomizer/ @ilyassFouih @jordanpowell88
+/tools/custom-atomizer/ @infra
 
 # Frontend Team Projects
-/libs/pmo/main-layout/ @ilyassFouih
+/libs/pmo/main-layout/ @frontend
 
 # Frontend Team Projects
-/libs/sys-admin/auth/ @ilyassFouih
+/libs/sys-admin/auth/ @frontend
 
 # Backend Team Projects
-/libs/common/api/db/ @jordanpowell88
+/libs/common/api/db/ @backend
 
 # Common Team Projects
-/libs/common/models/ @ilyassFouih @jordanpowell88
+/libs/common/models/ @common
 
 # Backend Team Projects
-/libs/api/pmo/order/ @jordanpowell88
+/libs/api/pmo/order/ @backend
 
 # Frontend Team Projects
-/libs/pmo/not-found/ @ilyassFouih
+/libs/pmo/not-found/ @frontend
 
 # Frontend Team Projects
-/libs/pmo/order/ @ilyassFouih
+/libs/pmo/order/ @frontend
 
 # Frontend Team Projects
-/apps/sys-admin/ @ilyassFouih
+/apps/sys-admin/ @frontend
 
 # Frontend Team Projects
-/libs/pmo/home/ @ilyassFouih
+/libs/pmo/home/ @frontend
 
 # Frontend Team Projects
-/apps/pmo/ @ilyassFouih
+/apps/pmo/ @frontend
 
 # Backend Team Projects
-/apps/api/ @jordanpowell88
+/apps/api/ @backend

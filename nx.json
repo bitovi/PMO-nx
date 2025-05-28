@@ -138,22 +138,22 @@
       {
         "description": "Frontend Team Projects",
         "projects": ["tag:frontend"],
-        "owners": ["@ilyassFouih"]
+        "owners": ["@frontend"]
       },
       {
         "description": "Backend Team Projects",
         "projects": ["tag:backend"],
-        "owners": ["@jordanpowell88"]
+        "owners": ["@backend"]
       },
       {
         "description": "Common Team Projects",
         "projects": ["tag:common"],
-        "owners": ["@ilyassFouih", "@jordanpowell88"]
+        "owners": ["@common"]
       },
       {
         "description": "Infra Team Projects",
         "projects": ["tag:infra"],
-        "owners": ["@ilyassFouih", "@jordanpowell88"]
+        "owners": ["@infra"]
       }
     ]
   },
