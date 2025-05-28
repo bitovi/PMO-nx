@@ -1,0 +1,35 @@
+<mat-toolbar class="tool-bar">
+  <div class="logo-container">
+    <a routerLink="/">
+      <span class="app-logo">PMO</span>
+    </a>
+  </div>
+
+  <button routerLinkActive mat-button routerLink="/{{ pmoRootRoutes.HOME }}">
+    <mat-icon matListItemIcon>home</mat-icon>
+    <span matListItemTitle>Home</span>
+  </button>
+
+  <button
+    routerLinkActive
+    mat-button
+    routerLink="/{{ pmoRootRoutes.RESTAURANTS_LIST }}"
+  >
+    <mat-icon matListItemIcon>restaurant</mat-icon>
+    <span matListItemTitle>Restaurants</span>
+  </button>
+
+  <button
+    routerLinkActive
+    #rla="routerLinkActive"
+    mat-button
+    routerLink="/{{ pmoRootRoutes.MY_ORDERS_HISTORY }}"
+  >
+    <mat-icon matListItemIcon>receipt</mat-icon>
+    <span matListItemTitle>My Orders</span>
+  </button>
+</mat-toolbar>
+
+<div class="content-container">
+  <router-outlet />
+</div>

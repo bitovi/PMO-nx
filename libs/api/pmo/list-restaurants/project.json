@@ -1,0 +1,16 @@
+{
+  "name": "pmo-list-restaurants",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/pmo/list-restaurants/src",
+  "projectType": "library",
+  "tags": ["backend"],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/api/pmo/list-restaurants/jest.config.ts"
+      }
+    }
+  }
+}

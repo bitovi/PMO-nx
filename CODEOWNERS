@@ -26,6 +26,9 @@
 # Frontend Team Projects
 /libs/sys-admin/edit-restaurant/ @frontend
 
+# Backend Team Projects
+/libs/api/pmo/list-restaurants/ @backend
+
 # Frontend Team Projects
 /libs/sys-admin/add-restaurant/ @frontend
 
@@ -35,8 +38,8 @@
 # Backend Team Projects
 /libs/api/restaurants/orders/ @backend
 
-# Frontend Team Projects
-/libs/pmo/restaurant-detail/ @frontend
+# Backend Team Projects
+/libs/api/pmo/order-history/ @backend
 
 # Frontend Team Projects
 /libs/pmo/my-order-history/ @frontend
@@ -60,7 +63,7 @@
 /tools/custom-atomizer/ @infra
 
 # Frontend Team Projects
-/libs/pmo/order-detail/ @frontend
+/libs/pmo/main-layout/ @frontend
 
 # Frontend Team Projects
 /libs/sys-admin/auth/ @frontend
@@ -71,11 +74,14 @@
 # Common Team Projects
 /libs/common/models/ @common
 
+# Backend Team Projects
+/libs/api/pmo/order/ @backend
+
 # Frontend Team Projects
 /libs/pmo/not-found/ @frontend
 
 # Frontend Team Projects
-/libs/pmo/error/ @frontend
+/libs/pmo/order/ @frontend
 
 # Frontend Team Projects
 /apps/sys-admin/ @frontend

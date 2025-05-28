@@ -1,1 +1,22 @@
-<p>PmoHome works!</p>
+<mat-card class="container" appearance="outlined">
+  <div class="hero-text-container">
+    <h1>Ordering food has never been easier</h1>
+
+    <p>
+      We make it easier than ever to order gourmet food from your favorite local
+      restaurants.
+    </p>
+
+    <mat-card-actions>
+      <button mat-raised-button routerLink="/{{ pmoRoutes.RESTAURANTS_LIST }}">
+        Choose a restaurant
+      </button>
+    </mat-card-actions>
+  </div>
+  <div class="hero-img">
+    <img
+      src="https://place-my-order.firebaseapp.com/node_modules/place-my-order-assets/images/homepage-hero.jpg"
+      alt="Restaurant table with glasses."
+    />
+  </div>
+</mat-card>

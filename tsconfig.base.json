@@ -21,6 +21,13 @@
         "libs/common/ui/dash-board-layout/src/index.ts"
       ],
       "@common/utilities": ["libs/common/utilities/src/index.ts"],
+      "@features/api/pmo/list-restaurants": [
+        "libs/api/pmo/list-restaurants/src/index.ts"
+      ],
+      "@features/api/pmo/order": ["libs/api/pmo/order/src/index.ts"],
+      "@features/api/pmo/order-history": [
+        "libs/api/pmo/order-history/src/index.ts"
+      ],
       "@features/api/restaurants/auth": [
         "libs/api/restaurants/auth/src/index.ts"
       ],
@@ -37,16 +44,13 @@
       "@features/api/sys-admin/list-restaurants": [
         "libs/api/sys-admin/list-restaurants/src/index.ts"
       ],
-      "@features/pmo/error": ["libs/pmo/error/src/index.ts"],
       "@features/pmo/home": ["libs/pmo/home/src/index.ts"],
+      "@features/pmo/main-layout": ["libs/pmo/main-layout/src/index.ts"],
       "@features/pmo/my-order-history": [
         "libs/pmo/my-order-history/src/index.ts"
       ],
       "@features/pmo/not-found": ["libs/pmo/not-found/src/index.ts"],
-      "@features/pmo/order-detail": ["libs/pmo/order-detail/src/index.ts"],
-      "@features/pmo/restaurant-detail": [
-        "libs/pmo/restaurant-detail/src/index.ts"
-      ],
+      "@features/pmo/order": ["libs/pmo/order/src/index.ts"],
       "@features/pmo/restaurants-list": [
         "libs/pmo/restaurants-list/src/index.ts"
       ],

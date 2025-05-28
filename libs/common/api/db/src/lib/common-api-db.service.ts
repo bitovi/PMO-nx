@@ -75,4 +75,17 @@ export class CommonApiDbService {
   getRestaurantByName(name: string): RestaurantLoginResponse | undefined {
     return this.restaurants.find((restaurant) => restaurant.name === name);
   }
+
+  getAllOrders(): OrderModel[] {
+    return [...this.orders];
+  }
+
+  addOrder(order: Omit<OrderModel, 'id'>): OrderModel {
+    const newOrder: OrderModel = {
+      ...order,
+      id: `${this.orders.length + 1}`,
+    };
+    this.orders.push(newOrder);
+    return newOrder;
+  }
 }

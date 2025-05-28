@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PmoHomeComponent } from './pmo-home.component';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 describe('PmoHomeComponent', () => {
   let component: PmoHomeComponent;
@@ -7,7 +10,13 @@ describe('PmoHomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PmoHomeComponent],
+      imports: [PmoHomeComponent, MatCardModule, MatButtonModule, RouterModule],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {},
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PmoHomeComponent);

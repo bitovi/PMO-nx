@@ -1,1 +1,107 @@
-<p>PmoRestaurantsList works!</p>
+<div class="restaurants-container">
+  <h1 class="page-title">Restaurants</h1>
+
+  <!-- Loading indicator -->
+  @if (isLoading()) {
+    <div class="loading-container">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Loading restaurants...</p>
+    </div>
+  }
+
+  <!-- Error message -->
+  @if (error()) {
+    <div class="error-message">
+      <p>{{ error() }}</p>
+      <button mat-raised-button color="primary" (click)="fetchRestaurants()">
+        Try Again
+      </button>
+    </div>
+  }
+
+  <!-- No restaurants found -->
+  @if (!isLoading() && !error() && restaurants().length === 0) {
+    <div class="no-restaurants">
+      <p>No restaurants found.</p>
+    </div>
+  }
+
+  <!-- Restaurant list -->
+  @if (!isLoading() && !error() && restaurants().length > 0) {
+    <div class="restaurant-grid">
+      @for (restaurant of restaurants(); track restaurant.id) {
+        <mat-card class="restaurant-card">
+          <mat-card-header>
+            <mat-card-title>{{ restaurant.name }}</mat-card-title>
+            <mat-card-subtitle
+              >{{ restaurant.address.city }},
+              {{ restaurant.address.state }}</mat-card-subtitle
+            >
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="address">
+              <mat-icon fontIcon="location_on"></mat-icon>
+              <span
+                >{{ restaurant.address.street }},
+                {{ restaurant.address.zip }}</span
+              >
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="menu-section">
+              <h3>Lunch Menu</h3>
+              <div class="menu-items">
+                @for (
+                  item of restaurant.menu.lunch.slice(0, 3);
+                  track item.name
+                ) {
+                  <div class="menu-item">
+                    <span class="item-name">{{ item.name }}</span>
+                    <span class="item-price">${{ item.price.toFixed(2) }}</span>
+                  </div>
+                }
+                @if (restaurant.menu.lunch.length > 3) {
+                  <div class="more-items">
+                    + {{ restaurant.menu.lunch.length - 3 }} more items
+                  </div>
+                }
+              </div>
+            </div>
+
+            <div class="menu-section">
+              <h3>Dinner Menu</h3>
+              <div class="menu-items">
+                @for (
+                  item of restaurant.menu.dinner.slice(0, 3);
+                  track item.name
+                ) {
+                  <div class="menu-item">
+                    <span class="item-name">{{ item.name }}</span>
+                    <span class="item-price">${{ item.price.toFixed(2) }}</span>
+                  </div>
+                }
+                @if (restaurant.menu.dinner.length > 3) {
+                  <div class="more-items">
+                    + {{ restaurant.menu.dinner.length - 3 }} more items
+                  </div>
+                }
+              </div>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button
+              mat-button
+              color="primary"
+              routerLink="/{{ pmoRoutes.ORDER }}/{{ restaurant.id }}"
+            >
+              Order Now
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</div>

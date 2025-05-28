@@ -1,0 +1,163 @@
+@if (restaurant(); as restaurant) {
+  <div class="container">
+    <h2 class="page-title">
+      Create New Order for {{ restaurant.name }} restaurant
+    </h2>
+
+    <!-- Customer Section -->
+    <mat-accordion>
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>person</mat-icon> Customer Information
+          </mat-panel-title>
+          <mat-panel-description>
+            Enter customer details
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form [formGroup]="orderForm">
+          <div formGroupName="customer" class="customer-form">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" placeholder="Full Name" />
+              <mat-error
+                *ngIf="orderForm.get('customer.name')?.hasError('required')"
+              >
+                Name is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder="Email"
+              />
+              <mat-error
+                *ngIf="orderForm.get('customer.email')?.hasError('required')"
+              >
+                Email is required
+              </mat-error>
+              <mat-error
+                *ngIf="orderForm.get('customer.email')?.hasError('email')"
+              >
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                formControlName="phoneNumber"
+                placeholder="Phone Number"
+              />
+              <mat-error
+                *ngIf="
+                  orderForm.get('customer.phoneNumber')?.hasError('required')
+                "
+              >
+                Phone number is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Delivery Address</mat-label>
+              <textarea
+                matInput
+                formControlName="address"
+                placeholder="Delivery Address"
+                rows="3"
+              ></textarea>
+              <mat-error
+                *ngIf="orderForm.get('customer.address')?.hasError('required')"
+              >
+                Address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+
+      <!-- Order Items Section -->
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>shopping_cart</mat-icon> Order Items
+          </mat-panel-title>
+          <mat-panel-description>
+            Manage items in your order
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="items-container">
+          Lunch
+          <ul>
+            <li *ngFor="let lunchMenu of restaurant.menu.lunch">
+              {{ lunchMenu.name }} - {{ lunchMenu.price | currency }}
+              <button
+                mat-button
+                (click)="addItem(lunchMenu)"
+                class="add-item-button"
+              >
+                Add
+              </button>
+              <button mat-button (click)="removeItem(lunchMenu)">remove</button>
+            </li>
+          </ul>
+          Lunch
+          <ul>
+            <li *ngFor="let lunchMenu of restaurant.menu.lunch">
+              {{ lunchMenu.name }} - {{ lunchMenu.price | currency }}
+              <button
+                mat-button
+                (click)="addItem(lunchMenu)"
+                class="add-item-button"
+              >
+                Add
+              </button>
+              <button mat-button (click)="removeItem(lunchMenu)">remove</button>
+            </li>
+          </ul>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Order Summary and Submit -->
+    <div class="order-summary">
+      <mat-divider></mat-divider>
+      <h3>Order Summary</h3>
+      <div
+        class="summary-details"
+        *ngIf="orderForm.controls.items.controls.length > 0"
+      >
+        <ul>
+          <li
+            *ngFor="
+              let item of orderForm.controls.items.controls;
+              let i = index
+            "
+          >
+            {{ item.value.name }} - {{ item.value.price | currency }}
+          </li>
+        </ul>
+        <div class="summary-item">
+          <span>Total Amount: {{ totalPrice() | currency }}</span>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="submitOrder(restaurant.id)"
+        >
+          Place Order
+        </button>
+        <button mat-button type="reset">Clear</button>
+      </div>
+    </div>
+  </div>
+}
