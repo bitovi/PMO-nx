@@ -106,11 +106,10 @@
     },
     "@nx/owners",
     {
-      "plugin": "./tools/custom-atomizer/src/plugin.ts",
+      "plugin": "@nx/playwright/plugin",
       "options": {
         "targetName": "e2e",
-        "ciTargetName": "e2e-ci",
-        "testIsolation": true
+        "ciTargetName": "e2e-ci"
       }
     },
     {
@@ -139,22 +138,22 @@
       {
         "description": "Frontend Team Projects",
         "projects": ["tag:frontend"],
-        "owners": ["@frontend"]
+        "owners": ["@bitovi/frontend"]
       },
       {
         "description": "Backend Team Projects",
         "projects": ["tag:backend"],
-        "owners": ["@backend"]
+        "owners": ["@bitovi/backend"]
       },
       {
         "description": "Common Team Projects",
         "projects": ["tag:common"],
-        "owners": ["@common"]
+        "owners": ["@bitovi/frontend", "@bitovi/backend"]
       },
       {
         "description": "Infra Team Projects",
         "projects": ["tag:infra"],
-        "owners": ["@infra"]
+        "owners": ["@jordanpowell88"]
       }
     ]
   },
