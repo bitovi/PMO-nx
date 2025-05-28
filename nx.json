@@ -138,22 +138,22 @@
       {
         "description": "Frontend Team Projects",
         "projects": ["tag:frontend"],
-        "owners": ["@frontend"]
+        "owners": ["@bitovi/frontend"]
       },
       {
         "description": "Backend Team Projects",
         "projects": ["tag:backend"],
-        "owners": ["@backend"]
+        "owners": ["@bitovi/backend"]
       },
       {
         "description": "Common Team Projects",
         "projects": ["tag:common"],
-        "owners": ["@common"]
+        "owners": ["@bitovi/common"]
       },
       {
         "description": "Infra Team Projects",
         "projects": ["tag:infra"],
-        "owners": ["@infra"]
+        "owners": ["@bitovi/infra"]
       }
     ]
   },
