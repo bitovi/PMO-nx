@@ -59,6 +59,9 @@
 # Frontend Team Projects
 /libs/common/utilities/ @bitovi/frontend
 
+# Infra Team Projects
+/tools/custom-atomizer/ jordanpowell88
+
 # Frontend Team Projects
 /libs/pmo/main-layout/ @bitovi/frontend
 
