@@ -59,9 +59,6 @@
 # Frontend Team Projects
 /libs/common/utilities/ @bitovi/frontend
 
-# Infra Team Projects
-/tools/custom-atomizer/ @bitovi/infra
-
 # Frontend Team Projects
 /libs/pmo/main-layout/ @bitovi/frontend
 
@@ -72,7 +69,7 @@
 /libs/common/api/db/ @bitovi/backend
 
 # Common Team Projects
-/libs/common/models/ @bitovi/common
+/libs/common/models/ @bitovi/frontend @bitovi/backend
 
 # Backend Team Projects
 /libs/api/pmo/order/ @bitovi/backend

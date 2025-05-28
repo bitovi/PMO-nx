@@ -148,12 +148,12 @@
       {
         "description": "Common Team Projects",
         "projects": ["tag:common"],
-        "owners": ["@bitovi/common"]
+        "owners": ["@bitovi/frontend", "@bitovi/backend"]
       },
       {
         "description": "Infra Team Projects",
         "projects": ["tag:infra"],
-        "owners": ["@bitovi/infra"]
+        "owners": ["jordanpowell88"]
       }
     ]
   },
