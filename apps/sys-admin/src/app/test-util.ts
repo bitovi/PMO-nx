@@ -1,3 +1,3 @@
 export const testUtil = () => {
-  return 2;
+  return 4;
 };
