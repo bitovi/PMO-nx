@@ -78,6 +78,22 @@
         }
       ]
     },
+    "serve-all": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+
+      "options": {
+        "proxyConfig": "apps/sys-admin/proxy.conf.json",
+        "port": 4202,
+        "buildTarget": "sys-admin:build:development"
+      },
+      "continuous": true,
+      "dependsOn": [
+        {
+          "target": "serve",
+          "projects": "pmo-api"
+        }
+      ]
+    },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {

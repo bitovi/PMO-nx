@@ -74,6 +74,22 @@
         }
       ]
     },
+    "serve-all": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "proxyConfig": "apps/pmo/proxy.conf.json",
+        "buildTarget": "pmo:build:development",
+        "port": 4200
+      },
+      "continuous": true,
+      "dependsOn": [
+        {
+          "target": "serve-all",
+          "projects": "restaurants-admin"
+        }
+      ]
+    },
+
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
