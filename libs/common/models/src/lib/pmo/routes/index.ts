@@ -1,1 +1,1 @@
-export * from './Pmo-root.routes.model';
+export * from './pmo-root.routes.model';
